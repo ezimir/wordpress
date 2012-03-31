@@ -749,6 +749,13 @@ body
 						width: 462px;
 					}
 
+					#blog_home_container.no_image_slider #posts_container article .archive_image_slider {
+						display: none;
+					}
+					#blog_home_container.no_image_slider #posts_container article .blog_post_info_and_excerpt {
+						width: 95%;
+					}
+
 			#blog_home_container #main_sidebar
 			{
 				width: 204px;

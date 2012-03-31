@@ -6,7 +6,7 @@
 
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 
-<section id="blog_home_container">
+<section id="blog_home_container" class="no_image_slider">
 
 	<div id="posts_container">
 
