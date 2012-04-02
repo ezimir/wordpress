@@ -21,7 +21,7 @@
 					<?php endif; ?>
 					<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					<?php the_excerpt(); ?>
-					<p class="read_more"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a></p>
+					<p class="read_more"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Čítať ďalej</a></p>
 
 				</div><!-- .search_result -->
 
