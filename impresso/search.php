@@ -29,7 +29,7 @@
 
 				<div id="post-0" class="post no-results not-found">
 					<div class="entry-content">
-						<p><?php _e( 'Aww Shucks! No results', 'iamfriendly' ); ?></p>
+						<p><?php _e( 'Bohužiaľ, nič sa nenašlo...', 'iamfriendly' ); ?></p>
 
 					</div><!-- .entry-content -->
 				</div><!-- #post-0 -->

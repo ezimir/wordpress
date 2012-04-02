@@ -71,7 +71,7 @@
 		<?php $subtitle = get_search_query(); ?>
 
 		<section id="slogan">
-			<h2 class="subtitle">Search results for: <span class="highlight"><?php echo $subtitle; ?></span></h2>
+			<h2 class="subtitle">Výsledky vyhľadávania: <span class="highlight"><?php echo $subtitle; ?></span></h2>
 		</section><!-- #slogan -->
 
 	<?php endif; ?>
