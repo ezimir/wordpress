@@ -620,13 +620,16 @@
 	function friendly_main_search_form( $form )
 	{
 
+		$default_search_value = "Vyhľadávanie...";
+
 		$search_form_value = get_search_query();
-		$search_form_value = ($search_form_value && ($search_form_value != "")) ? $search_form_value : "Vyhľadávanie...";
+		$search_form_value = ($search_form_value && ($search_form_value != "")) ? $search_form_value : $default_search_value;
 
 	    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" ><div>
 	    <input type="text" value="' . $search_form_value . '" name="s" id="s" onFocus="clearText(this)" onBlur="clearText(this)" />
 	    <input type="submit" id="searchsubmit" value="'. esc_attr__('Hľadať','impresso') .'" />
 	    </div>
+		<script>var defaultSearchValue = \'' . $default_search_value . '\';</script>
 	    </form>';
 
 	    return $form;

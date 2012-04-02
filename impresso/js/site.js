@@ -89,6 +89,16 @@ function clearText(field){
 	else if (field.value == '') field.value = field.defaultValue;
 }
 
+$('#searchform').submit(function (e) {
+	var $term = $('#s'),
+		val = $term.val().trim();
+
+	if (val === defaultSearchValue || val === ''){
+		$term.val(defaultSearchValue).focus();
+		return e.preventDefault();
+	}
+});
+
 $('a img.size-medium, a img.size-small, a img.size-thumbnail, a img.size-full, a img.size-large, a img.topup').parent().attr("rel","colorbox");
 
 $(document).ready(function(){
