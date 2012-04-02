@@ -621,11 +621,11 @@
 	{
 
 		$search_form_value = get_search_query();
-		$search_form_value = ($search_form_value && ($search_form_value != "")) ? $search_form_value : "Start typing...";
+		$search_form_value = ($search_form_value && ($search_form_value != "")) ? $search_form_value : "Vyhľadávanie...";
 
 	    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" ><div>
 	    <input type="text" value="' . $search_form_value . '" name="s" id="s" onFocus="clearText(this)" onBlur="clearText(this)" />
-	    <input type="submit" id="searchsubmit" value="'. esc_attr__('Search','impresso') .'" />
+	    <input type="submit" id="searchsubmit" value="'. esc_attr__('Hľadať','impresso') .'" />
 	    </div>
 	    </form>';
 
