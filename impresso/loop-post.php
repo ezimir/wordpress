@@ -10,8 +10,8 @@
 		<?php friendly_check_and_load_scripts_and_set_global_vars(); ?>
 
 		<nav id="nav-single">
-			<span class="nav-previous"><?php previous_post_link( '%link', __( '&larr; Previous Post', 'friendly_mercury_theme' ) ); ?></span>
-			<span class="nav-next"><?php next_post_link( '%link', __( 'Next Post &rarr;', 'friendly_mercury_theme' ) ); ?></span>
+			<span class="nav-previous"><?php previous_post_link( '%link', __( '&larr; Predošlý príspevok', 'friendly_mercury_theme' ) ); ?></span>
+			<span class="nav-next"><?php next_post_link( '%link', __( 'Nasledujúci príspevok &rarr;', 'friendly_mercury_theme' ) ); ?></span>
 		</nav><!-- #nav-single -->
 
 		<div id="after_content_widget_area">
