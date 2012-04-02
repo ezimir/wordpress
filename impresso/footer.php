@@ -9,13 +9,13 @@
 			<?php else : ?>
 
 				<div class="widget">
-					<h4>Get In Touch</h4>
-					<p>123 Road Name, Place Name, City<br />
-					123456, Country</p>
+					<h4>Kde nás nájdete</h4>
+					<p>Hroncova 21<br />
+					040 01, Košice</p>
 
-					<p>T: +01 123 4567 8910</p>
+					<p>T: +421 903 318 483</p>
 
-					<p>E: fake-name@account.com</p>
+					<p>E: arthea@arthea.sk</p>
 				</div><!-- .widget -->
 
 				<div class="widget">
