@@ -20,10 +20,9 @@
 
 				<div class="widget">
 
-					<h4>Us on Twitter</h4>
+					<h4>Facebook</h4>
 					<div class="tweet">
-						<p>This is our latest tweet. We'll keep it pretty short for now. We're awesome. But you knew that already. We're loving this Impresso theme!</p>
-						<p class="tweet_time">About an hour ago</p>
+						<p>Vždy čerstvé informácie a pikošky, samozrejme na našej stránke na <a href="https://www.facebook.com/pages/Arthea-sro/242624912457370">Facebook-u</a>.</p>
 					</div>
 
 				</div><!-- .widget -->
