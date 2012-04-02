@@ -27,7 +27,7 @@
 		<?php $author_name = get_query_var('author_name'); ?>
 
 		<section id="slogan">
-			<h2 class="subtitle"><?php __('This is the author archive for ', 'iamfriendly'); ?><?php echo $author_name; ?></h2>
+			<h2 class="subtitle"><?php __('Archív používateľa ', 'iamfriendly'); ?><?php echo $author_name; ?></h2>
 		</section><!-- #slogan -->
 
 	<?php endif; ?>
@@ -45,7 +45,7 @@
 	<?php if(is_date()) : ?>
 
 		<section id="slogan">
-		<h2 class="subtitle"><?php _e('This is the archive for ','impresso'); ?>
+		<h2 class="subtitle"><?php _e('Archív za ','impresso'); ?>
 			<?php if ( is_day() ) : ?>
 				<?php printf( __( '%s', 'iamfriendly' ), '<span class="highlight">' . get_the_date() . '</span>' ); ?>
 			<?php elseif ( is_month() ) : ?>
