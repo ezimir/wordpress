@@ -67,6 +67,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/default.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/anythingslider.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/colorbox.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/facebook.css" />
 
 	<?php if(array_key_exists('idevice_icon',$data)) : ?>
 

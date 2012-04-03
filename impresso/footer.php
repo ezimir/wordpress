@@ -18,36 +18,43 @@
 					<p>E: arthea@arthea.sk</p>
 				</div><!-- .widget -->
 
+				<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+
 				<div class="widget">
-
 					<h4>Facebook</h4>
-					<div class="tweet">
-						<p>Vždy čerstvé informácie a pikošky, samozrejme na našej stránke na <a href="https://www.facebook.com/pages/Arthea-sro/242624912457370">Facebook-u</a>.</p>
-					</div>
+					<p id="fb-info">Vždy čerstvé informácie a pikošky, samozrejme na našej stránke na Facebooku:</p>
 
+					<script id="template-fbuser" type="text/x-jquery-tmpl">
+						<a href="${link}"><img src="${picture}" /></a>
+						<a href="${link}"> ${name} </a>
+						<span> ${about} </span>
+						<iframe src="https://www.facebook.com/plugins/like.php?href=${link}&layout=button_count&font=trebuchet+ms&locale=sk_SK&appId=114370451982089" allowTransparency="true"></iframe>
+					</script>
+					<div id="fb-user"></div>
 				</div><!-- .widget -->
 
-				<div class="widget flickr_widget">
-					<img src="http://flickholdr.com/51/51/trees/bw" alt="" />
-					<img src="http://flickholdr.com/51/51/sea/bw" alt="" />
-					<img src="http://flickholdr.com/51/51/sun/bw" alt="" />
-					<img src="http://flickholdr.com/51/51/mountain/bw" alt="" />
-					<img src="http://flickholdr.com/51/51/flowers/bw" alt="" />
-					<img src="http://flickholdr.com/51/51/lake/bw" alt="" />
+				<div class="widget" id="facebook">
+					<h4>Posledné príspevky</h4>
+
+					<script id="template-fbfeed" type="text/x-jquery-tmpl">
+						{{each(i, item) items}}
+						<p>
+							{{if item.message}}${item.message}{{else}}${item.name}{{/if}}
+							<a href="${item.permalink}">${item.date} ${item.time}</a>
+						</p>
+						{{/each}}
+					</script>
+					<div id="fb-feed"></div>
 				</div><!-- .widget -->
 
-				<div class="widget logo_widget">
+				<script>
+					var uid = '242624912457370';
 
-					<img src="<?php echo $style_dir; ?>/images/impresso-logo-139-dark.png" alt="" />
-
-					<div class="widget widget_social_network">
-						<a href="#" title=""><img src="<?php echo $style_dir; ?>/images/facebook_footer.png" alt="" /></a>
-						<a href="#" title=""><img src="<?php echo $style_dir; ?>/images/twitter_footer.png" alt="" /></a>
-						<a href="#" title=""><img src="<?php echo $style_dir; ?>/images/rss_footer.png" alt="" /></a>
-						<a href="#" title=""><img src="<?php echo $style_dir; ?>/images/dribbble_footer.png" alt="" /></a>
-					</div>
-
-				</div><!-- .widget -->
+					$(function () {
+						$('#fb-user').fbuser({ id: uid });
+						$('#fb-feed').fbfeed({ id: uid, token: '114370451982089|Z1bWi06KeQrp_mu-7MgPTaKaeqA' });
+					});
+				</script>
 
 			<?php endif; ?>
 
