@@ -76,6 +76,7 @@
 		<script src="<?php echo $style_dir; ?>/js/jquery.nivo.slider.pack.js"></script>
 		<script src="<?php echo $style_dir; ?>/js/anythingslider.js"></script>
 		<script src="<?php echo $style_dir; ?>/js/jquery.colorbox-min.js"></script>
+		<script src="<?php echo $style_dir; ?>/js/jquery.facebook.feed.js"></script>
 		<script src="<?php echo $style_dir; ?>/js/site.js"></script>
 
 		<!--[if lt IE 9]>
