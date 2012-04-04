@@ -6,10 +6,12 @@
 		settings_user = {},
 		settings_feed = {},
 		defaults_user = {
+			locale: 'sk_SK',
 			params: 'name,picture,link,about',
 			template: '#template-' + fbuser
 		},
 		defaults_feed = {
+			locale: 'sk_SK',
 			items: 3,
 			template: '#template-' + fbfeed
 		},
@@ -63,7 +65,7 @@
 		settings_user.$target.empty();
 
 		$.ajax({
-			url: API_BASE + settings_user.id + '/?fields=' + settings_user.params,
+			url: API_BASE + settings_user.id + '/?fields=' + settings_user.params + '&locale=' + settings_user.locale,
 			dataType: 'jsonp',
 			success: fbResponseUser
 		});
@@ -76,7 +78,7 @@
 		settings_feed.$target.empty();
 
 		$.ajax({
-			url: API_BASE + settings_feed.id + '/feed/?limit=' + settings_feed.items + '&access_token=' + settings_feed.token,
+			url: API_BASE + settings_feed.id + '/feed/?limit=' + settings_feed.items + '&access_token=' + settings_feed.token + '&locale=' + settings_feed.locale,
 			dataType: 'jsonp',
 			success: fbResponseFeed
 		});
