@@ -8,15 +8,7 @@
 
 			<?php else : ?>
 
-				<div class="widget">
-					<h4>Kde nás nájdete</h4>
-					<p>Hroncova 21<br />
-					040 01, Košice</p>
-
-					<p>T: +421 903 318 483</p>
-
-					<p>E: arthea@arthea.sk</p>
-				</div><!-- .widget -->
+				<?php get_template_part('section','footer-contact'); ?>
 
 				<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 
