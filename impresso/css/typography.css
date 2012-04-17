@@ -284,7 +284,8 @@ span.callout:hover a
 }
 
 #tinyform input[type="text"],
-#main_sidebar .widget_search input[type="text"]
+#main_sidebar .widget_search input[type="text"],
+#main_sidebar .widget_mailchimpsf_widget input[type="text"]
 {
 	background: rgb(250,250,250);
 	padding: 6px 4px;
@@ -302,7 +303,8 @@ span.callout:hover a
 	border-radius: 4px;
 }
 
-#main_sidebar .widget_search input[type="text"]
+#main_sidebar .widget_search input[type="text"],
+#main_sidebar .widget_mailchimpsf_widget input[type="text"]
 {
 	width: 160px;
 }
@@ -325,14 +327,16 @@ span.callout:hover a
 
 #tinyform input[type="text"]:hover,
 #tinyform textarea:hover,
-#main_sidebar .widget_search input[type="text"]:hover
+#main_sidebar .widget_search input[type="text"]:hover,
+#main_sidebar .widget_mailchimpsf_widget input[type="text"]:hover
 {
 	border: 1px solid rgb(150,150,150);
 }
 
 #tinyform input[type="text"]:focus,
 #tinyform textarea:focus,
-#main_sidebar .widget_search input[type="text"]:focus
+#main_sidebar .widget_search input[type="text"]:focus,
+#main_sidebar .widget_mailchimpsf_widget input[type="text"]:focus
 {
 	background: white;
 	border: 1px solid rgb(150,150,150);
@@ -341,7 +345,8 @@ span.callout:hover a
 }
 
 #tinyform input[type="submit"],
-#main_sidebar .widget_search input[type="submit"]
+#main_sidebar .widget_search input[type="submit"],
+#main_sidebar .widget_mailchimpsf_widget input[type="submit"]
 {
 	clear: both;
 	margin-top: 24px;
@@ -360,14 +365,16 @@ span.callout:hover a
 	transition: all .3s linear;
 }
 
-#main_sidebar .widget_search input[type="submit"]
+#main_sidebar .widget_search input[type="submit"],
+#main_sidebar .widget_mailchimpsf_widget input[type="submit"]
 {
 	float: left;
 	margin-top: 6px;
 }
 
 #tinyform input[type="submit"]:hover,
-#main_sidebar .widget_search input[type="submit"]:hover
+#main_sidebar .widget_search input[type="submit"]:hover,
+#main_sidebar .widget_mailchimpsf_widget input[type="submit"]:hover
 {
 	background: rgb(100,100,100);
 	border: 1px solid rgb(100,100,100);
@@ -938,3 +945,4 @@ span.required
 	font-style: italic;
 	color: rgb(180,180,180);
 }
+
