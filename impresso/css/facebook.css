@@ -14,7 +14,7 @@
 		width: 40px;
 	}
 	#fb-user iframe {
-		background: #262626;
+		background: transparent;
 		border: 0;
 		height: 21px;
 		margin-top: .15em;
@@ -22,10 +22,3 @@
 		width: 120px;
 	}
 
-#main_footer .widget#facebook {
-	width: 410px;
-}
-#fb-feed a {
-	font-size: .85em;
-	margin-left: .5em;
-}

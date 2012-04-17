@@ -20,40 +20,32 @@
 
 				<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 
-				<div class="widget">
-					<h4>Facebook</h4>
-					<p id="fb-info">Vždy čerstvé informácie a pikošky, samozrejme na našej stránke na Facebooku:</p>
+				<script id="template-fbwidget" type="text/x-jquery-tmpl">
+					<div id="fbuser" class="widget widget_fbuser">
+						<h3 class="widget-title">Facebook</h3>
+						<p id="fb-info">Vždy čerstvé informácie a pikošky, samozrejme na našej stránke na Facebooku:</p>
+						<div id="fb-user"></div>
+					</div>
+				</script>
 
-					<script id="template-fbuser" type="text/x-jquery-tmpl">
+				<script id="template-fbuser" type="text/x-jquery-tmpl">
+					<div id="fb-user">
 						<a href="${link}"><img src="${picture}" /></a>
 						<a href="${link}"> ${name} </a>
 						<span> ${about} </span>
 						<iframe src="https://www.facebook.com/plugins/like.php?href=${link}&layout=button_count&font=trebuchet+ms&locale=sk_SK&appId=114370451982089" allowTransparency="true"></iframe>
-					</script>
-					<div id="fb-user"></div>
-				</div><!-- .widget -->
-
-				<div class="widget" id="facebook">
-					<h4>Posledné príspevky</h4>
-
-					<script id="template-fbfeed" type="text/x-jquery-tmpl">
-						{{each(i, item) items}}
-						<p>
-							{{if item.message}}${item.message}{{else}}${item.name}{{/if}}
-							<a href="${item.permalink}">${item.date} ${item.time}</a>
-						</p>
-						{{/each}}
-					</script>
-					<div id="fb-feed"></div>
-				</div><!-- .widget -->
+					</div>
+				</script>
 
 				<script>
-					var uid = '242624912457370';
+					var $sidebar = $('#sidebar-primary');
+					if ($sidebar.length) {
+						$('#template-fbwidget').tmpl().appendTo($sidebar);
 
-					$(function () {
-						$('#fb-user').fbuser({ id: uid });
-						$('#fb-feed').fbfeed({ id: uid, token: '114370451982089|Z1bWi06KeQrp_mu-7MgPTaKaeqA' });
-					});
+						$(function () {
+							$('#fb-user').fbuser({ id: 242624912457370 });
+						});
+					}
 				</script>
 
 			<?php endif; ?>
