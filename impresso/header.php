@@ -52,7 +52,7 @@
 	<?php global $style_dir; $style_dir = get_stylesheet_directory_uri(); //Cache the stylesheet_directory call ?>
 
 	<!--[if !IE 6]><!-->
-		<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $style_dir; ?>/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $style_dir; ?>/style.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/style.css'); ?>" />
 	<!--<![endif]-->
 
 	<!--[if gte IE 7]>
@@ -63,11 +63,11 @@
 		<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.0.css" media="screen, projection">
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/nivo-slider.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/default.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/anythingslider.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/colorbox.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/facebook.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/nivo-slider.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/css/nivo-slider.css'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/default.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/css/default.css'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/anythingslider.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/css/anythingslider.css'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/colorbox.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/css/colorbox.css'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $style_dir; ?>/css/facebook.css<?php echo '?' . filemtime(get_stylesheet_directory() . '/css/facebook.css'); ?>" />
 
 	<?php if(array_key_exists('idevice_icon',$data)) : ?>
 
@@ -116,7 +116,7 @@
 		if($colour_scheme && $colour_scheme != "light" && $colour_scheme != "custom")
 		{
 			//Include the colour scheme CSS File
-			echo '<link rel="stylesheet" type="text/css" media="screen, projection" href="'.$style_dir.'/css/style-'.$colour_scheme.'.css" />';
+			echo '<link rel="stylesheet" type="text/css" media="screen, projection" href="'.$style_dir.'/css/style-'.$colour_scheme.'.css?' . filemtime(get_stylesheet_directory() . '/css/style-'.$colour_scheme.'.css').'" />';
 		}
 
 		if($colour_scheme == "custom")
