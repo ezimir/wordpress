@@ -127,9 +127,9 @@
 				{
 
 					$imgBeg = strpos($post_content, '<img', $start);
-					$post = substr($post_content, $imgBeg);
-					$imgEnd = strpos($post, '>');
-					$postOutput = substr($post, 0, $imgEnd+1);
+					$postRemaining = substr($post_content, $imgBeg);
+					$imgEnd = strpos($postRemaining, '>');
+					$postOutput = substr($postRemaining, 0, $imgEnd+1);
 					$postOutput = preg_replace('/width="([0-9]*)" height="([0-9]*)"/', '',$postOutput);;
 					$image[$i] = $postOutput;
 					$start = $imgEnd+1;
