@@ -8,6 +8,12 @@
 	// use following format for line:
 	//  'filename.jpg',
 	$slider_images = array(
+		'f1.jpg',
+		'f2.jpg',
+		'f3.jpg',
+		'f4.jpg',
+		'f5.jpg',
+		'f6.jpg',
 	);
 	// these images have to be in /images/ directory
 ?>
