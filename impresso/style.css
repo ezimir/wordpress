@@ -269,20 +269,19 @@ body
 
 				.slider-wrapper
 				{
-					padding: 6px;
-					border: 1px solid rgb(240,240,240);
 					overflow: hidden;
+					margin: -2em auto 3em;
 				}
 
 				#slider
 				{
 					position: relative;
-					width: 572px; /* Change this to your images width */
-					height: 376px; /* Change this to your images height */
+					width: 100%; /* Change this to your images width */
+					height: 375px; /* Change this to your images height */
 					background: url(images/loading.gif) no-repeat 50% 50%;
-					float: left;
 					overflow: hidden;
 				}
+
 
 				#slider img
 				{
