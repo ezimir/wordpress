@@ -1,3 +1,4 @@
+<?php global $sidebar_choice, $post; ?>
 
 <section id="blog_home_container" class="no_image_slider">
 
