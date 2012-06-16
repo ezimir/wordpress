@@ -621,6 +621,9 @@ function getParentCategoriesSlugTranslation($link, $catid, $lang) {
 
 function qTranslateSlug_category_link($link, $id){
   //TODO: implement it!
+  if ( is_object($id) ) {
+    $id = $id->id;
+  }
   global $wpdb, $q_config, $qts_use_language, $wp_query;
   $lang = ($qts_use_language === null)?$q_config['language']:$qts_use_language;
   $home = rtrim(get_option('home'),"/");
