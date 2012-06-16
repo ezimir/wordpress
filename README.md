@@ -1,6 +1,10 @@
 Wordpress stuff
 ===============
 
+Themes
+------
+- Theme for [Mazal Tov!](http://mazaltov.sk) Jewish Festival
+
 Widgets
 -------
 - Facebook widget: displays selected profile's icon, name and like button
