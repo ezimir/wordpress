@@ -273,6 +273,9 @@ body {
         vertical-align: top;
         width: 20%;
     }
+    .FacebookWidget iframe {
+        float: right;
+    }
 
 
 #site-info {
