@@ -49,7 +49,7 @@ class FacebookWidget extends WP_Widget {
         if (!empty($title))
         echo $before_title . $title . $after_title;;
 
-        echo '<p> ' . __('Always fresh information available on our Facebook page', 'facebookwidget') . ': </p>';
+        echo '<p> ' . __('Up-to-date information and gossip on our Facebook website', 'facebookwidget') . ': </p>';
         //Vždy čerstvé informácie a pikošky na našej stránke na Facebooku
 
         echo '<div class="fb">';

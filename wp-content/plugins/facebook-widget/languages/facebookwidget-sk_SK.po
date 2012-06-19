@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Facebook Widget\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-06 12:43+0100\n"
-"PO-Revision-Date: 2012-06-06 12:44+0100\n"
+"PO-Revision-Date: 2012-06-19 13:04+0100\n"
 "Last-Translator: Martin Tóth <ezimir@gmail.com>\n"
 "Language-Team: Martin Tóth\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,6 @@ msgid "Profile"
 msgstr "Profil"
 
 #: ../index.php:52
-msgid "Always fresh information available on our Facebook page"
+msgid "Up-to-date information and gossip on our Facebook website"
 msgstr "Vždy čerstvé informácie a pikošky na našej stránke na Facebooku"
 
