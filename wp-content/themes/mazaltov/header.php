@@ -37,6 +37,8 @@
 
             <div id="access">
                 <?php wp_nav_menu( array( 'theme_location' => 'main', 'sort_column' => 'menu_order', 'container' => false, 'menu_id' => 'menu-main', 'after' => '<i class="btn-after"></i>' ) ); ?>
+
+<?php qtrans_generateLanguageSelectCode(); ?>
             </div><!-- #access -->
 
         </div><!-- #masthead -->

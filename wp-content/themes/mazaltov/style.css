@@ -75,7 +75,7 @@ body {
         list-style: none;
         margin-bottom: 0;
         position: absolute;
-        right: 5em;
+        right: 7em;
     }
         .menu li {
             float: left;
@@ -139,6 +139,17 @@ body {
             #menu-footer li:last-child:after {
                 display: none;
             }
+
+    #qtranslate-chooser {
+        bottom: -2px;
+        font-size: .9em;
+        list-style: none;
+        position: absolute;
+        right: 0;
+    }
+        #qtranslate-chooser li.active {
+            display: none;
+        }
 
 #main {
     padding: 2em 0;
