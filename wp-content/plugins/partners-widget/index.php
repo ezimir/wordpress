@@ -6,10 +6,43 @@ Description: List of images selected by media tag
 Author: Martin Tóth
 */
 
+function partnerswidget_showlist( $atts ) {
+
+    $media = get_attachments_by_media_tags('media_tags=' . $atts['mediatag']);
+    if (count($media) === 0) {
+        return '';
+    }
+
+    return '<div class="PartnersList">' . partnerswidget_get_list_html($media) . '</div>';
+}
+add_shortcode( 'partners', 'partnerswidget_showlist' );
+
+
 function partnerswidget_internationalization() {
     load_plugin_textdomain('partnerswidget', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 add_action('plugins_loaded', 'partnerswidget_internationalization');
+
+
+function sort_by_title($a, $b) {
+    if ($a->post_title == $b->post_title) return 0;
+    return ($a->post_title > $b->post_title) ? 1 : -1;
+}
+
+
+function partnerswidget_get_list_html($images) {
+    $result = '';
+    usort($images, 'sort_by_title');
+
+    foreach ($images as $image) {
+        if (strlen($image->post_excerpt) > 0) {
+            $result .= '<a href="' . $image->post_excerpt . '" class="partner"><img src="' . $image->guid . '" /></a>';
+        } else {
+            $result .= '<img src="' . $image->guid . '" class="partner" />';
+        }
+    }
+    return $result;
+}
 
 
 class PartnersWidget extends WP_Widget {
@@ -38,26 +71,18 @@ class PartnersWidget extends WP_Widget {
     function widget($args, $instance) {
         extract($args, EXTR_SKIP);
 
+        $media = get_attachments_by_media_tags('media_tags=' . $instance['mediatag']);
+        if (count($media) === 0) {
+            return;
+        }
+
         echo $before_widget;
         $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 
         if (!empty($title))
         echo $before_title . $title . $after_title;;
 
-        function sort_by_title($a, $b) {
-            if ($a->post_title == $b->post_title) return 0;
-            return ($a->post_title > $b->post_title) ? 1 : -1;
-        }
-
-        $media = get_attachments_by_media_tags('media_tags=' . $instance['mediatag']);
-        usort($media, 'sort_by_title');
-        foreach ($media as $image) {
-            if (strlen($image->post_excerpt) > 0) {
-                echo '<a href="' . $image->post_excerpt . '" class="partner"><img src="' . $image->guid . '" /></a>';
-            } else {
-                echo '<img src="' . $image->guid . '" class="partner" />';
-            }
-        }
+        echo partnerswidget_get_list_html($media);
 
         echo $after_widget;
     }

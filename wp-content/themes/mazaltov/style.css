@@ -259,16 +259,25 @@ body {
     }
 
 
-.PartnersWidget .partner {
+.PartnersWidget .partner,
+.PartnersList .partner {
     border-radius: .5em;
     display: block;
     margin: 1em auto;
     padding: 1em;
     width: 90px;
 }
-.PartnersWidget a:hover {
+.PartnersWidget a:hover,
+.PartnersList a:hover {
     background: rgba(0, 0, 0, .1);
 }
+.PartnersList {
+    overflow: hidden;
+}
+    .PartnersList .partner {
+        float: left;
+        line-height: 100px;
+    }
 
 .FacebookWidget {
     overflow: hidden;
