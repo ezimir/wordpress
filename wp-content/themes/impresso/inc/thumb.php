@@ -881,7 +881,7 @@ class timthumb {
 			}
 		}
 		
-		$base = $this->docRoot;
+		$base = '';
 		
 		// account for Windows directory structure
 		if (strstr($_SERVER['SCRIPT_FILENAME'],':')) {
@@ -896,7 +896,7 @@ class timthumb {
 			if(file_exists($base . $src)){
 				$this->debug(3, "Found file as: " . $base . $src);
 				$real = $this->realpath($base . $src);
-				if(stripos($real, $this->realpath($this->docRoot)) === 0){
+				if(stripos($real, $this->realpath($this->docRoot)) == 0){
 					return $real;
 				} else {
 					$this->debug(1, "Security block: The file specified occurs outside the document root.");
