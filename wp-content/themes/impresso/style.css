@@ -950,8 +950,8 @@ body
 
 			#main_footer .widget
 			{
-				width: 204px;
-				margin-right: 34px;
+				width: 180px;
+				margin-right: 10px;
 				float: left;
 				margin-bottom: 8px;
 			}
@@ -961,6 +961,17 @@ body
 					width: 100%;
 					margin-right: 0;
 				}
+
+				#main_footer .PartnersWidget {
+					margin-right: 0;
+					width: 540px;
+				}
+
+					#main_footer .widget .partner {
+						display: block;
+						float: left;
+						margin: 0 15px 15px 0;
+					}
 
 			#main_footer .logo_widget
 			{
