@@ -69,126 +69,18 @@
 		/* ===================================================================================================== */
 
 		/*
-			Register Home Page Widget Area - default used by Client Slider
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'home_page_widget_area',
-				'name' => __( 'Home Page','impresso' ),
-				'description' => __( 'This widget area is full-width on the home page, just above the blog section. In the demo, we use the client slider (see widget)','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
 			Register Footer Widget Area
 		*/
 
 		register_sidebar(
 			array(
 				'id' => 'footer_widget_area',
-				'name' => __( 'Footer - 4 Widgets','impresso' ),
-				'description' => __( 'This is the widget area for the footer, we use 4 widgets in it - you should, too.','impresso' ),
+				'name' => __( 'Footer','impresso' ),
+				'description' => __( 'This is the widget area for the footer','impresso' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h4 class="widget-title">',
 				'after_title' => '</h4>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
-			Register the sidebar for the holding page (primarily for the e-mail signup)
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'holding_page_below_countdown',
-				'name' => __( 'Holding Page Widget Area','impresso' ),
-				'description' => __( 'This widget area is used just below the countdown on the holding page (Only visible if you activate it in your theme options page)','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
-			Register the sidebar for the 404 Page
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'error_404_page_widget_area',
-				'name' => __( '404 Page Widget Area','impresso' ),
-				'description' => __( 'Widget area for the 404 page (the page shown when a user gets to a page which does not exist)','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
-			Register the sidebar for the bottom of single blog posts so people can add widgets
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'single_blog_post_after_content_before_comments',
-				'name' => __( 'Single Blog Post - After Content','impresso' ),
-				'description' => __( 'This widget area allows you to add custom widgets after your blog post\'s content and before the comments.','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
-			Register the sidebar for the footer - top row
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'footer_top_row',
-				'name' => __( 'Footer - Top Row','impresso' ),
-				'description' => __( 'This widget area allows you to add custom widgets into the top row of your footer. (default: email subscribe, socialise and contact)','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
-			)
-		);
-
-		/* ===================================================================================================== */
-
-		/*
-			Register the sidebar for the footer - bottom row
-		*/
-
-		register_sidebar(
-			array(
-				'id' => 'footer_bottom_row',
-				'name' => __( 'Footer - Bottom Row','impresso' ),
-				'description' => __( 'This widget area allows you to add custom widgets into the bottom row of your footer. (default: copyright info and "powered by")','impresso' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget' => '</div>',
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>'
 			)
 		);
 
