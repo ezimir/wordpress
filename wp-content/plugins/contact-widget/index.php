@@ -6,6 +6,11 @@ Description: Simple contact widget
 Author: Martin Tóth
 */
 
+function contactwidget_internationalization() {
+    load_plugin_textdomain('contactwidget', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action('plugins_loaded', 'contactwidget_internationalization');
+
 
 class ContactWidget extends WP_Widget {
     function ContactWidget() {
@@ -20,11 +25,10 @@ class ContactWidget extends WP_Widget {
             $$arg = $instance[$arg];
         }
 
-        foreach ($args as $arg => $default) {
-    ?>
-        <p><label for="<?php echo $this->get_field_id($arg); ?>"><?php _e( ucwords($arg), 'contactwidget' ) ?>: <input class="widefat" id="<?php echo $this->get_field_id($arg); ?>" name="<?php echo $this->get_field_name($arg); ?>" type="text" value="<?php echo attribute_escape($$arg); ?>" /></label></p>
-    <?php
-        }
+        echo '<p><label for="' . $this->get_field_id('title') . '">' . __('Title', 'contactwidget') . ': <input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" value="' . attribute_escape($title) . '" class="widefat" type="text" /></label></p>';
+        echo '<p><label for="' . $this->get_field_id('address') . '">' . __('Address', 'contactwidget') . ': <input id="' . $this->get_field_id('address') . '" name="' . $this->get_field_name('address') . '" value="' . attribute_escape($address) . '" class="widefat" type="text" /></label></p>';
+        echo '<p><label for="' . $this->get_field_id('phone') . '">' . __('Phone', 'contactwidget') . ': <input id="' . $this->get_field_id('phone') . '" name="' . $this->get_field_name('phone') . '" value="' . attribute_escape($phone) . '" class="widefat" type="text" /></label></p>';
+        echo '<p><label for="' . $this->get_field_id('email') . '">' . __('Email', 'contactwidget') . ': <input id="' . $this->get_field_id('email') . '" name="' . $this->get_field_name('email') . '" value="' . attribute_escape($email) . '" class="widefat" type="text" /></label></p>';
     }
 
     function widget($args, $instance) {
@@ -38,8 +42,8 @@ class ContactWidget extends WP_Widget {
         }
 
         echo '<p>' . $instance['address'] . '</p>';
-        echo '<p> T: ' . $instance['phone'] . '</p>';
-        echo '<p> E: ' . $instance['email'] . '</p>';
+        echo '<p> ' . __('P', 'contactwidget') . ': ' . $instance['phone'] . '</p>';
+        echo '<p> ' . __('E', 'contactwidget') . ': ' . $instance['email'] . '</p>';
 
         echo $after_widget;
     }

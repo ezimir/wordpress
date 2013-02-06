@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Contact Widget\n"
+"POT-Creation-Date: 2013-02-06 09:55+0100\n"
+"PO-Revision-Date: 2013-02-06 09:57+0100\n"
+"Last-Translator: Martin Tóth <ezimir@gmail.com>\n"
+"Language-Team: Martin Tóth\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../index.php:17
+msgid "Simple contact widget"
+msgstr "Jednoduchý kontakt widget"
+
+#: ../index.php:18
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ../index.php:28
+msgid "Title"
+msgstr "Nadpis"
+
+#: ../index.php:29
+msgid "Address"
+msgstr "Adresa"
+
+#: ../index.php:30
+msgid "Phone"
+msgstr "Telefón"
+
+#: ../index.php:31
+msgid "Email"
+msgstr "Email"
+
+#: ../index.php:45
+msgid "P"
+msgstr "T"
+
+#: ../index.php:46
+msgid "E"
+msgstr "E"
