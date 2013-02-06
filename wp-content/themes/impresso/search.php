@@ -21,7 +21,7 @@
 					<?php endif; ?>
 					<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					<?php the_excerpt(); ?>
-					<p class="read_more"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Čítať ďalej</a></p>
+					<p class="read_more"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a></p>
 
 				</div><!-- .search_result -->
 
@@ -29,7 +29,7 @@
 
 				<div id="post-0" class="post no-results not-found">
 					<div class="entry-content">
-						<p><?php _e( 'Bohužiaľ, nič sa nenašlo...', 'iamfriendly' ); ?></p>
+						<p><?php _e( 'Aww Shucks! No results', 'impresso' ); ?></p>
 
 					</div><!-- .entry-content -->
 				</div><!-- #post-0 -->

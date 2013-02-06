@@ -27,7 +27,7 @@
 		<?php $author_name = get_query_var('author_name'); ?>
 
 		<section id="slogan">
-			<h2 class="subtitle"><?php __('Archív používateľa ', 'iamfriendly'); ?><?php echo $author_name; ?></h2>
+			<h2 class="subtitle"><?php __('This is the author archive for ', 'impresso'); ?><?php echo $author_name; ?></h2>
 		</section><!-- #slogan -->
 
 	<?php endif; ?>
@@ -45,13 +45,13 @@
 	<?php if(is_date()) : ?>
 
 		<section id="slogan">
-		<h2 class="subtitle"><?php _e('Archív za ','impresso'); ?>
+		<h2 class="subtitle"><?php _e('This is the archive for ','impresso'); ?>
 			<?php if ( is_day() ) : ?>
-				<?php printf( __( '%s', 'iamfriendly' ), '<span class="highlight">' . get_the_date() . '</span>' ); ?>
+				<?php printf( __( '%s', 'impresso' ), '<span class="highlight">' . get_the_date() . '</span>' ); ?>
 			<?php elseif ( is_month() ) : ?>
-				<?php printf( __( '%s', 'iamfriendly' ), '<span class="highlight">' . get_the_date( 'F Y' ) . '</span>' ); ?>
+				<?php printf( __( '%s', 'impresso' ), '<span class="highlight">' . get_the_date( 'F Y' ) . '</span>' ); ?>
 			<?php elseif ( is_year() ) : ?>
-				<?php printf( __( '%s', 'iamfriendly' ), '<span class="highlight">' . get_the_date( 'Y' ) . '</span>' ); ?>
+				<?php printf( __( '%s', 'impresso' ), '<span class="highlight">' . get_the_date( 'Y' ) . '</span>' ); ?>
 			<?php endif; ?>
 		</h2>
 	</section><!-- #slogan -->
@@ -71,7 +71,7 @@
 		<?php $subtitle = get_search_query(); ?>
 
 		<section id="slogan">
-			<h2 class="subtitle">Výsledky vyhľadávania: <span class="highlight"><?php echo $subtitle; ?></span></h2>
+			<h2 class="subtitle"><?php printf( __( 'Search results for:', 'impresso' ) ) ?> <span class="highlight"><?php echo $subtitle; ?></span></h2>
 		</section><!-- #slogan -->
 
 	<?php endif; ?>

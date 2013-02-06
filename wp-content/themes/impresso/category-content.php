@@ -72,7 +72,7 @@
 
 					<p><?php echo friendly_custom_excerpts($post->ID, 26); ?></p>
 
-					<p class="read_more_link"><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php _e('Čítať ďalej','impresso'); ?> &rarr;</a></p>
+					<p class="read_more_link"><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php _e('Read more','impresso'); ?> &rarr;</a></p>
 
 				</div><!-- .blog_post_info_and_excerpt -->
 

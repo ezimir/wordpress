@@ -433,10 +433,10 @@
 
 					<div class="comment-author vcard">
 
-						<?php printf(__('<cite class="fn">%s</cite> <span class="wrote">napísal(a)</span><br />','impresso'), get_comment_author_link()) ?>
+						<?php printf(__('<cite class="fn">%s</cite> <span class="wrote">wrote</span><br />','impresso'), get_comment_author_link()) ?>
 
 						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-							<?php printf(__('%1$s <span>o</span> %2$s','impresso'), get_comment_date(),  get_comment_time()) ?>
+							<?php printf(__('<span>on</span> %1$s<br/> <span>at</span> %2$s','impresso'), get_comment_date(),  get_comment_time()) ?>
 						</a>
 
 						<div class="comment_avatar avatar-comment-<?php comment_ID(); ?>">
@@ -447,7 +447,7 @@
 							<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 						</div>
 
-						<?php edit_comment_link(__('Upraviť','impresso'),'  ','') ?>
+						<?php edit_comment_link(__('Edit','impresso'),'  ','') ?>
 					</div>
 
 					<div class="comment_text">
@@ -455,7 +455,7 @@
 						<?php if ($comment->comment_approved == '0') : ?>
 
 							<div class="comment_under_moderation">
-								<em><?php _e('Komentár čaká na odsúhlasenie.','impresso') ?></em>
+								<em><?php _e('Your comment is awaiting moderation.','impresso') ?></em>
 							</div>
 
 					<?php endif; ?>
