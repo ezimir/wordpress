@@ -21,15 +21,17 @@ function partnerswidget_get_list_html( $media_tag ) {
 
     usort($media, 'sort_media_by_title');
 
-    echo '<p>';
+    $result = '<p>';
     foreach ($media as $image) {
         if (strlen($image->post_excerpt) > 0) {
-            echo '<a href="' . $image->post_excerpt . '" class="partner"><img src="' . $image->guid . '" /></a>';
+            $result .= '<a href="' . $image->post_excerpt . '" class="partner"><img src="' . $image->guid . '" /></a>';
         } else {
-            echo '<img src="' . $image->guid . '" class="partner" />';
+            $result .= '<img src="' . $image->guid . '" class="partner" />';
         }
     }
-    echo '</p>';
+    $result .= '</p>';
+
+    return $result;
 }
 
 function partnerswidget_showlist( $atts ) {
