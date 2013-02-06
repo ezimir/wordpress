@@ -15,6 +15,10 @@ if (!function_exists('sort_media_by_title')) {
 
 function partnerswidget_get_list_html( $media_tag ) {
     $media = get_attachments_by_media_tags('media_tags=' . $media_tag);
+    if (!count($media)) {
+        return '';
+    }
+
     usort($media, 'sort_media_by_title');
 
     echo '<p>';
