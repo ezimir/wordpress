@@ -8,8 +8,8 @@ class Pipedrive {
         $this->api_token = $api_token;
     }
 
-    public function get_organization($search_term) {
-        $response = $this->make_request('organizations/find', array(
+    public function getOrganization($search_term) {
+        $response = $this->makeRequest('organizations/find', array(
             'term' => $search_term
         ));
 
@@ -18,7 +18,7 @@ class Pipedrive {
         }
     }
 
-    private function get_request_url($endpoint, $params) {
+    private function getRequestUrl($endpoint, $params) {
         $params['api_token'] = $this->api_token;
 
         $url = $this->api_url . $endpoint . '?' . http_build_query($params);
@@ -26,8 +26,8 @@ class Pipedrive {
         return $url;
     }
 
-    private function make_request($endpoint, $params) {
-        $url = $this->get_request_url($endpoint, $params);
+    private function makeRequest($endpoint, $params) {
+        $url = $this->getRequestUrl($endpoint, $params);
         $request = file_get_contents($url);
         $response = json_decode($request);
 

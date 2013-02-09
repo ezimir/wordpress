@@ -17,7 +17,7 @@ function pipedrive_shortcode() {
     $pipedrive = new Pipedrive($options->get('api-token'));
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $organization = $pipedrive->get_organization($_POST['organization']);
+        $organization = $pipedrive->getOrganization($_POST['organization']);
         var_dump($organization);
     }
     ob_start();
