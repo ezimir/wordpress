@@ -1,11 +1,5 @@
 <?php
 
-$pipedrive_settings = array(
-    'category' => 'pipedrive-settings',
-    'section' => 'pipedrive-api',
-    'apikeyname' => 'pipedrive-apikey',
-);
-
 
 function pipedrive_display_options_page() {
     global $pipedrive_settings;
