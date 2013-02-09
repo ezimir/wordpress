@@ -25,20 +25,20 @@ class OptionsPage extends Options {
         $this->add_field( $section, 'api-token', __( 'API token' ) );
 
         $section = $this->add_section( 'organization', __( 'Organization Related Fields' ) );
-        $this->add_field( $section, 'organization-name', __( 'Name' ) );
-        $this->add_field( $section, 'organization-address', __( 'Adddress' ) );
-        $this->add_field( $section, 'organization-web', __( 'Web' ) );
+        $this->add_field( $section, 'organization-name', __( 'Name' ), 'select' );
+        $this->add_field( $section, 'organization-address', __( 'Adddress' ), 'select' );
+        $this->add_field( $section, 'organization-web', __( 'Web' ), 'select' );
 
         $section = $this->add_section( 'person-fields', __( 'Person Related Fields' ) );
-        $this->add_field( $section, 'person-name', __( 'Name' ) );
-        $this->add_field( $section, 'person-email', __( 'Email' ) );
-        $this->add_field( $section, 'person-mobile', __( 'Mobile' ) );
+        $this->add_field( $section, 'person-name', __( 'Name' ), 'select' );
+        $this->add_field( $section, 'person-email', __( 'Email' ), 'select' );
+        $this->add_field( $section, 'person-mobile', __( 'Mobile' ), 'select' );
 
         add_action( 'admin_init', array($this, 'register_settings') );
         add_action( 'admin_menu', array($this, 'add_options_page') );
     }
 
-    public function add_section($id, $title) {
+    public function add_section( $id, $title ) {
         return $this->sections[$id] = (object) array(
             'id' => $id,
             'title' => $title,
@@ -46,14 +46,18 @@ class OptionsPage extends Options {
         );
     }
 
-    public function add_field($section, $id, $title, $type = 'text') {
-        return $section->fields[$id] = (object) array(
+    public function add_field( $section, $id, $title, $type = 'text', $choices = array() ) {
+        $field = array(
             'id' => $id,
             'name' => $this->category . '[' . $id . ']',
             'title' => $title,
             'type' => $type,
             'value' => $this->options[$id]
         );
+        if ($type === 'select') {
+            $field['choices'] = (object) $choices;
+        }
+        return $section->fields[$id] = (object) $field;
     }
 
     public function register_settings() {
@@ -72,7 +76,16 @@ class OptionsPage extends Options {
 
     public function display_setting( $args ) {
         extract( $args );
-        echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ) . '" />';
+        if ($type === 'text') {
+            echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ) . '" />';
+        }
+        if ($type === 'select') {
+            echo '<select id="' . $id . '" name="' . $name . '">';
+            foreach ($choices as $choice) {
+                echo '<option value="' . $choice->value . '"' . ($choice->value === $value ? ' selected="selected"' : '')  . '>' . $choice->title . '</option>';
+            }
+            echo '</select>';
+        }
     }
 
     public function add_options_page() {
