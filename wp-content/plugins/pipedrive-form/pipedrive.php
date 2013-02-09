@@ -2,7 +2,6 @@
 
 class Pipedrive {
     var $api_url = 'https://api.pipedrive.com/v1/';
-
     var $api_token;
 
     public function __construct($api_token) {

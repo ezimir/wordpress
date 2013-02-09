@@ -6,12 +6,6 @@ Description: Adds a deal to Pipedrive CRM
 Author: Martin Tóth
 */
 
-$pipedrive_settings = array(
-    'category' => 'pipedrive-settings',
-    'section' => 'pipedrive-api',
-    'apikeyname' => 'pipedrive-apikey',
-);
-
 $plugin_dir = plugin_dir_path( __FILE__ );
 include_once $plugin_dir . 'options.php';
 include_once $plugin_dir . 'pipedrive.php';
@@ -19,12 +13,8 @@ include_once $plugin_dir . 'pipedrive.php';
 
 
 function pipedrive_shortcode() {
-    global $pipedrive_settings;
-
-    $options = get_option($pipedrive_settings['category']);
-    $api_key = $options[$pipedrive_settings['apikeyname']];
-
-    $pipedrive = new Pipedrive($api_key);
+    $options = new Options();
+    $pipedrive = new Pipedrive($options->get('api-token'));
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $organization = $pipedrive->get_organization($_POST['organization']);

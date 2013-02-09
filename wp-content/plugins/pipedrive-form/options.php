@@ -1,9 +1,48 @@
 <?php
 
 
-function pipedrive_display_options_page() {
-    global $pipedrive_settings;
+class Options {
+    var $category = 'pipedrive-settings';
+    var $options;
 
+    public function __construct() {
+        $this->options = get_option($this->category);
+    }
+
+    public function get($option_name) {
+        return $this->options[$option_name];
+    }
+}
+
+
+class OptionsPage extends Options {
+
+    public function __construct() {
+        parent::__construct();
+
+        add_action( 'admin_init', array($this, 'register_settings') );
+        add_action( 'admin_menu', array($this, 'add_options_page') );
+    }
+
+    public function register_settings() {
+        add_settings_section( 'api', __( 'Pipedrive API' ), array( $this, 'display_section' ), $_GET['page'] );
+        add_settings_field( 'api-token', __( 'API token' ), array( $this, 'display_setting' ), $_GET['page'], 'api' );
+
+        register_setting( $this->category, $this->category );
+    }
+
+    public function display_section() {
+    }
+
+    public function display_setting( $args = array() ) {
+        echo '<input class="regular-text" type="text" id="api-token" name="' . $this->category . '[api-token]" value="' . esc_attr( $this->options['api-token'] ) . '" />';
+    }
+
+    public function add_options_page() {
+        add_options_page( __( 'Pipedrive Deal Form' ), __( 'Pipedrive Deal Form' ), 'manage_options', 'pipedrive-options', array($this, 'display_options_page') );
+    }
+
+    public function display_options_page() {
 ?>
 <div class="wrap">
     <img src="<?php echo plugins_url('pipedrive-form/pipedrive_128.png'); ?>" class="icon32" />
@@ -16,7 +55,7 @@ function pipedrive_display_options_page() {
 
     <form action="options.php" method="post">
 <?php
-        settings_fields( $pipedrive_settings['category'] );
+        settings_fields( $this->category );
         do_settings_sections( $_GET['page'] );
 ?>
         <p class="submit">
@@ -25,34 +64,13 @@ function pipedrive_display_options_page() {
     </form>
 </div>
 <?php
+    }
+
+
 }
 
-function pipedrive_add_options_page() {
-    $admin_page = add_options_page( __( 'Pipedrive Deal Form' ), __( 'Pipedrive Deal Form' ), 'manage_options', 'pipedrive-options', 'pipedrive_display_options_page' );
+if ( is_admin() ) {
+    new OptionsPage();
 }
-add_action( 'admin_menu', 'pipedrive_add_options_page' );
-
-
-
-function pipedrive_display_section() {
-}
-
-function pipedrive_display_setting( $args = array() ) {
-    global $pipedrive_settings;
-
-    $options = get_option( $pipedrive_settings['category'] );
-
-    echo '<input class="regular-text" type="text" id="' . $pipedrive_settings['apikeyname'] . '" name="' . $pipedrive_settings['category'] . '[' . $pipedrive_settings['apikeyname'] . ']" value="' . esc_attr( $options[$pipedrive_settings['apikeyname']] ) . '" />';
-}
-
-function register_settings() {
-    global $pipedrive_settings;
-
-    add_settings_section( $pipedrive_settings['section'], __( 'Pipedrive API' ), 'pipedrive_display_section', $_GET['page'] );
-    add_settings_field( $pipedrive_settings['apikeyname'], __( 'API key' ), 'pipedrive_display_setting', $_GET['page'], $pipedrive_settings['section'] );
-
-    register_setting( $pipedrive_settings['category'], $pipedrive_settings['category'] );
-}
-add_action( 'admin_init', 'register_settings' );
 
 ?>
