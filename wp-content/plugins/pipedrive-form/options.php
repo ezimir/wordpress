@@ -39,7 +39,7 @@ class OptionsPage extends Options {
 
             $fields = $api->getList( 'organizationFields' );
             $sets = array_filter( $fields, function ( $field ) {
-                return $field->field_type === 'set';
+                return in_array( $field->field_type,  array('set', 'enum') );
             } );
             $choices = $this->getChoices( $sets );
             $this->addField( $section, 'organization-relation', __( 'Relation' ), 'select', $choices );
@@ -66,8 +66,13 @@ class OptionsPage extends Options {
                 'value' => (string) $field->id,
                 'title' => $field->name
             );
-            if ( $field->field_type === 'set' ) {
-                $attributes['options'] = (object) $field->options;
+            if ( in_array( $field->field_type,  array('set', 'enum') ) ) {
+                $attributes['options'] = array_map( function ( $option ) {
+                    return (object) array(
+                        'value' => (string) $option->id,
+                        'title' => $option->label
+                    );
+                }, $field->options );
             }
             return (object) $attributes;
         }, $fields );
@@ -87,10 +92,18 @@ class OptionsPage extends Options {
             'name' => $this->category . '[' . $id . ']',
             'title' => $title,
             'type' => $type,
-            'value' => $this->options[$id]
+            'value' => $this->options[$id],
         );
         if ($type === 'select') {
             $field['choices'] = (object) $choices;
+
+            $withoptions = array_filter( $choices, function ( $choice ) {
+                return (boolean) $choice->options;
+            } );
+            if ( count( $withoptions ) > 0 ) {
+                $field['optionname'] = $this->category . '[' . $id . '-option]';
+                $field['optionvalue'] = $this->options[$id . '-option'];
+            }
         }
         return $section->fields[$id] = (object) $field;
     }
@@ -118,11 +131,23 @@ class OptionsPage extends Options {
 
         if ($type === 'select') {
             echo '<select id="' . $id . '" name="' . $name . '">';
-            echo '<option> -- select -- </option>';
+            echo '<option value=""> -- select -- </option>';
             foreach ($choices as $choice) {
                 echo '<option value="' . $choice->value . '"' . ($choice->value === $value ? ' selected="selected"' : '')  . '>' . $choice->title . '</option>';
             }
             echo '</select>';
+
+            $withoptions = array_filter( (array) $choices, function ( $choice ) {
+                return (boolean) $choice->options;
+            } );
+            foreach ($withoptions as $choice) {
+                echo '<select id="' . $choice->value . '-option" name="' . $optionname . '">';
+                echo '<option value=""> -- select -- </option>';
+                foreach ($choice->options as $option) {
+                    echo '<option value="' . $option->value . '"' . ($option->value === $optionvalue ? ' selected="selected"' : '')  . '>' . $option->title . '</option>';
+                }
+                echo '</select>';
+            }
         }
     }
 
@@ -146,6 +171,26 @@ class OptionsPage extends Options {
         settings_fields( $this->category );
         do_settings_sections( $_GET['page'] );
 ?>
+        <script>
+            var $ = jQuery;
+
+            $('form select[name$="option]"]').hide().prop('disabled', true);
+
+            $('form select:not([name$="option]"])')
+                .on('change', function () {
+                    var $select = $(this),
+                        value = $select.val();
+
+                    $select.parents('td').find('select[name$="option]"]').hide().prop('disabled', true);
+
+                    if (value) {
+                        $('#' + value + '-option').show().prop('disabled', false);
+                    }
+                })
+                .each(function (index, elem) {
+                    $('#' + $(elem).val() + '-option').show().prop('disabled', false);
+                });
+        </script>
         <p class="submit">
             <button type="submit" class="button-primary"> <?php _e('Save Changes'); ?> </button>
         </p>
