@@ -6,10 +6,10 @@ class Options {
     var $options;
 
     public function __construct() {
-        $this->options = get_option($this->category);
+        $this->options = get_option( $this->category );
     }
 
-    public function get($option_name) {
+    public function get( $option_name ) {
         return $this->options[$option_name];
     }
 }
@@ -21,21 +21,56 @@ class OptionsPage extends Options {
     public function __construct() {
         parent::__construct();
 
-        $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
-        $this->addField( $section, 'api-token', __( 'API token' ) );
-
-        $section = $this->addSection( 'organization', __( 'Organization Related Fields' ) );
-        $this->addField( $section, 'organization-name', __( 'Name' ), 'select' );
-        $this->addField( $section, 'organization-address', __( 'Adddress' ), 'select' );
-        $this->addField( $section, 'organization-web', __( 'Web' ), 'select' );
-
-        $section = $this->addSection( 'person-fields', __( 'Person Related Fields' ) );
-        $this->addField( $section, 'person-name', __( 'Name' ), 'select' );
-        $this->addField( $section, 'person-email', __( 'Email' ), 'select' );
-        $this->addField( $section, 'person-mobile', __( 'Mobile' ), 'select' );
+        $this->buildFields();
 
         add_action( 'admin_init', array($this, 'registerSettings') );
         add_action( 'admin_menu', array($this, 'addOptionsPage') );
+    }
+
+    public function buildFields() {
+        $api = new Pipedrive( $this->get('api-token') );
+
+        $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
+            $this->addField( $section, 'api-token', __( 'API token' ) );
+
+        $section = $this->addSection( 'organization', __( 'Organization Related Fields' ) );
+            $choices = $this->getChoices( $api->getList( 'users' ) );
+            $this->addField( $section, 'organization-owner', __( 'Owner' ), 'select', $choices );
+
+            $fields = $api->getList( 'organizationFields' );
+            $sets = array_filter( $fields, function ( $field ) {
+                return $field->field_type === 'set';
+            } );
+            $choices = $this->getChoices( $sets );
+            $this->addField( $section, 'organization-relation', __( 'Relation' ), 'select', $choices );
+
+            $varchars = array_filter( $fields, function ( $field ) {
+                return $field->field_type === 'varchar';
+            } );
+            $choices = $this->getChoices( $varchars );
+            $this->addField( $section, 'organization-name', __( 'Name' ), 'select', $choices );
+            $this->addField( $section, 'organization-address', __( 'Address' ), 'select', $choices );
+            $this->addField( $section, 'organization-web', __( 'Web' ), 'select', $choices );
+
+        $section = $this->addSection( 'person-fields', __( 'Person Related Fields' ) );
+            $choices = $this->getChoices( $api->getList( 'personFields' ) );
+            $this->addField( $section, 'person-name', __( 'Name' ), 'select', $choices );
+            $this->addField( $section, 'person-email', __( 'Email' ), 'select', $choices );
+            $this->addField( $section, 'person-phone', __( 'Phone' ), 'select', $choices );
+
+    }
+
+    public function getChoices($fields) {
+        return array_map( function ( $field ) {
+            $attributes = array(
+                'value' => (string) $field->id,
+                'title' => $field->name
+            );
+            if ( $field->field_type === 'set' ) {
+                $attributes['options'] = (object) $field->options;
+            }
+            return (object) $attributes;
+        }, $fields );
     }
 
     public function addSection( $id, $title ) {
@@ -61,9 +96,9 @@ class OptionsPage extends Options {
     }
 
     public function registerSettings() {
-        foreach ($this->sections as $section) {
+        foreach ( $this->sections as $section ) {
             add_settings_section( $section->id, $section->title, array( $this, 'displaySectionDescription' ), $_GET['page'] );
-            foreach ($section->fields as $field) {
+            foreach ( $section->fields as $field ) {
                 add_settings_field( $field->id, $field->title, array( $this, 'displayField' ), $_GET['page'], $section->id, get_object_vars( $field ) );
             }
         }
@@ -76,11 +111,14 @@ class OptionsPage extends Options {
 
     public function displayField( $args ) {
         extract( $args );
+
         if ($type === 'text') {
             echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ) . '" />';
         }
+
         if ($type === 'select') {
             echo '<select id="' . $id . '" name="' . $name . '">';
+            echo '<option> -- select -- </option>';
             foreach ($choices as $choice) {
                 echo '<option value="' . $choice->value . '"' . ($choice->value === $value ? ' selected="selected"' : '')  . '>' . $choice->title . '</option>';
             }

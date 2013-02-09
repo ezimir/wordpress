@@ -7,18 +7,18 @@ Author: Martin Tóth
 */
 
 $plugin_dir = plugin_dir_path( __FILE__ );
-include_once $plugin_dir . 'options.php';
 include_once $plugin_dir . 'pipedrive.php';
+include_once $plugin_dir . 'options.php';
 
 
 
 function pipedrive_shortcode() {
     $options = new Options();
-    $pipedrive = new Pipedrive($options->get('api-token'));
+    $pipedrive = new Pipedrive( $options->get('api-token') );
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $organization = $pipedrive->getOrganization($_POST['organization']);
-        var_dump($organization);
+    if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+        $organization = $pipedrive->getOrganization( $_POST['organization'] );
+        var_dump( $organization );
     }
     ob_start();
 ?>
