@@ -12,14 +12,28 @@ $pipedrive_settings = array(
     'apikeyname' => 'pipedrive-apikey',
 );
 
-include_once plugin_dir_path( __FILE__ ) . 'options.php';
+$plugin_dir = plugin_dir_path( __FILE__ );
+include_once $plugin_dir . 'options.php';
+include_once $plugin_dir . 'pipedrive.php';
+
 
 
 function pipedrive_shortcode() {
+    global $pipedrive_settings;
+
+    $options = get_option($pipedrive_settings['category']);
+    $api_key = $options[$pipedrive_settings['apikeyname']];
+
+    $pipedrive = new Pipedrive($api_key);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $organization = $pipedrive->get_organization($_POST['organization']);
+        var_dump($organization);
+    }
     ob_start();
 ?>
 <link rel="stylesheet" href="<?php echo plugins_url('pipedrive-form/style.css'); ?>" />
-<form class="pipedrive">
+<form class="pipedrive" method="post">
     <fieldset>
         <legend> Kto ste? </legend>
 
@@ -38,7 +52,7 @@ function pipedrive_shortcode() {
         <legend> Koho zastupujete? </legend>
 
         <label> Názov spoločnosti
-            <input type="text" />
+            <input type="text" name="organization" />
         </label>
         <label> Sídlo
             <input type="text" />
