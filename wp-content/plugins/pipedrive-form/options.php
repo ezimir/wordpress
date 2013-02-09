@@ -33,7 +33,7 @@ class OptionsPage extends Options {
         $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
             $this->addField( $section, 'api-token', __( 'API token' ) );
 
-        $section = $this->addSection( 'organization', __( 'Organization Related Fields' ) );
+        $section = $this->addSection( 'organization', __( 'Organization Fields' ) );
             $choices = $this->getChoices( $api->getList( 'users' ) );
             $this->addField( $section, 'organization-owner', __( 'Owner' ), 'select', $choices );
 
@@ -52,17 +52,15 @@ class OptionsPage extends Options {
             $this->addField( $section, 'organization-address', __( 'Address' ), 'select', $choices );
             $this->addField( $section, 'organization-web', __( 'Web' ), 'select', $choices );
 
-        $section = $this->addSection( 'person-fields', __( 'Person Related Fields' ) );
+        $section = $this->addSection( 'person-fields', __( 'Person Fields' ) );
             $choices = $this->getChoices( $api->getList( 'personFields' ) );
             $this->addField( $section, 'person-name', __( 'Name' ), 'select', $choices );
             $this->addField( $section, 'person-email', __( 'Email' ), 'select', $choices );
             $this->addField( $section, 'person-phone', __( 'Phone' ), 'select', $choices );
 
-        $section = $this->addSection( 'deal-fields', __( 'Deal Related Fields' ) );
+        $section = $this->addSection( 'deal-fields', __( 'Deal Fields' ) );
             $choices = $this->getChoices( $api->getList( 'stages' ) );
             $this->addField( $section, 'deal-stage', __( 'Stage' ), 'select', $choices );
-
-
     }
 
     public function getChoices($fields) {
