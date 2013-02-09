@@ -58,6 +58,11 @@ class OptionsPage extends Options {
             $this->addField( $section, 'person-email', __( 'Email' ), 'select', $choices );
             $this->addField( $section, 'person-phone', __( 'Phone' ), 'select', $choices );
 
+        $section = $this->addSection( 'deal-fields', __( 'Deal Related Fields' ) );
+            $choices = $this->getChoices( $api->getList( 'stages' ) );
+            $this->addField( $section, 'deal-stage', __( 'Stage' ), 'select', $choices );
+
+
     }
 
     public function getChoices($fields) {
