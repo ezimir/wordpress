@@ -8,31 +8,42 @@ class Pipedrive {
         $this->api_token = $api_token;
     }
 
-    public function getOrganization( $search_term ) {
+    public function getOrganization( $name, $defaults ) {
         $response = $this->makeRequest('organizations/find', array(
-            'term' => $search_term
+            'term' => $name
         ));
 
         if (count($response->data) === 1) {
             return $response->data[0];
         }
+
+        $response = $this->makeRequest('organizations', array(
+            'name' => $name,
+            'owner_id' => $defaults->owner_id
+        ), $post = true);
+
+        return $response;
+
     }
 
     public function getList( $object ) {
         return $this->makeRequest( $object )->data;
     }
 
-    private function getRequestUrl( $endpoint, $params ) {
-        $params['api_token'] = $this->api_token;
+    private function makeRequest( $endpoint, $params = array(), $post = false ) {
+        $url = $this->api_url . $endpoint . '?api_token=' . $this->api_token;
+        $params = http_build_query($params);
+        $options = array();
 
-        $url = $this->api_url . $endpoint . '?' . http_build_query($params);
+        if ($post) {
+            $options['method'] = 'POST';
+            $options['content'] = $params;
+        } elseif ($params) {
+            $url .= '&' . $params;
+        }
 
-        return $url;
-    }
-
-    private function makeRequest( $endpoint, $params = array() ) {
-        $url = $this->getRequestUrl( $endpoint, $params );
-        $request = file_get_contents( $url );
+        $context = stream_context_create( array( 'http' => $options ) );
+        $request = file_get_contents( $url, false, $context );
         $response = json_decode( $request );
 
         return $response;
