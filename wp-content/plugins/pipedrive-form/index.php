@@ -58,14 +58,50 @@ function pipedrive_shortcode() {
             $options->get( 'organization-web' ) => $form['organization']['web']
         ) );
 
+        $email_attr = $options->get( 'person-email' );
+        $phone_attr = $options->get( 'person-phone' );
         $person = $pipedrive->getOrCreate( 'persons', $form['person']['name'], array(
             'owner_id' => $options->get( 'organization-owner' ),
             'org_id' => $organization->id,
 
             $options->get( 'person-name' ) => $form['person']['name'],
-            $options->get( 'person-email' ) => $form['person']['email'],
-            $options->get( 'person-phone' ) => $form['person']['phone']
+            $email_attr => $form['person']['email'],
+            $phone_attr => $form['person']['phone']
         ) );
+        $update = array();
+        if ( $form['person']['email'] ) {
+            $emails = $person->$email_attr;
+            if ( count( $emails ) === 1 && !$emails[0]->value) {
+                $person->$email_attr = array();
+            }
+            $emails = array_map( function ( $email ) {
+                return $email->value;
+            }, $person->$email_attr );
+            if ( !in_array( $form['person']['email'], $emails ) ) {
+                $update['email'] = $person->$email_attr;
+                $update['email'][] = array(
+                    'value' => $form['person']['email']
+                );
+            }
+        }
+        if ( $form['person']['phone'] ) {
+            $phones = $person->$phone_attr;
+            if ( count( $phones ) === 1 && !$phones[0]->value) {
+                $person->$phone_attr = array();
+            }
+            $phones = array_map( function ( $phone ) {
+                return $phone->value;
+            }, $person->$phone_attr );
+            if ( !in_array( $form['person']['phone'], $phones ) ) {
+                $update['phone'] = $person->$phone_attr;
+                $update['phone'][] = array(
+                    'value' => $form['person']['phone']
+                );
+            }
+        }
+        if ( count( $update ) > 0 ) {
+            $pipedrive->update( 'persons', $person->id, $update );
+        }
 
         $deal = $pipedrive->create( 'deals', array(
             'user_id' => $options->get( 'organization-owner' ),
