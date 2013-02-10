@@ -21,7 +21,7 @@ class Pipedrive {
             'term' => $name
         ));
 
-        if ( count( $response-data ) === 0 ) {
+        if ( count( $response->data ) === 0 ) {
             return false;
         }
 
