@@ -11,6 +11,16 @@ include_once $plugin_dir . 'pipedrive.php';
 include_once $plugin_dir . 'options.php';
 
 
+function clean( $input ) {
+    $input = trim( htmlentities( strip_tags( $input, ',' ) ) );
+
+    if ( get_magic_quotes_gpc() )
+        $input = stripslashes( $input );
+
+    $input = mysql_real_escape_string( $input );
+
+    return $input;
+}
 
 function pipedrive_shortcode() {
     $options = new Options();
