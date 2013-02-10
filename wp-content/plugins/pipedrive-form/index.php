@@ -31,6 +31,11 @@ function pipedrive_shortcode() {
             'name' => '',
             'address' => '',
             'web' => ''
+        ),
+        'person' => array(
+            'name' => '',
+            'email' => '',
+            'phone' => ''
         )
     );
 
@@ -44,7 +49,7 @@ function pipedrive_shortcode() {
             }
         }
 
-        $organization = $pipedrive->getOrganization( $form['organization']['name'], (object) array(
+        $organization = $pipedrive->getOrCreate( 'organizations', $form['organization']['name'], array(
             'owner_id' => $options->get( 'organization-owner' ),
             $options->get( 'organization-relation' ) => $options->get( 'organization-relation-option' ),
 
@@ -52,7 +57,15 @@ function pipedrive_shortcode() {
             $options->get( 'organization-address' ) => $form['organization']['address'],
             $options->get( 'organization-web' ) => $form['organization']['web']
         ) );
-        var_dump( $organization );
+
+        $person = $pipedrive->getOrCreate( 'persons', $form['person']['name'], array(
+            'owner_id' => $options->get( 'organization-owner' ),
+            'org_id' => $organization->id,
+
+            $options->get( 'person-name' ) => $form['person']['name'],
+            $options->get( 'person-email' ) => $form['person']['email'],
+            $options->get( 'person-phone' ) => $form['person']['phone']
+        ) );
     }
     ob_start();
 ?>
@@ -62,13 +75,13 @@ function pipedrive_shortcode() {
         <legend> Kto ste? </legend>
 
         <label> Meno
-            <input type="text" class="regular-text" />
+            <input type="text" class="regular-text" name="person-name" value="<?php echo $form['person']['name']; ?>" />
         </label>
         <label> Email
-            <input type="email" class="regular-text" />
+            <input type="email" class="regular-text" name="person-email" value="<?php echo $form['person']['email']; ?>" />
         </label>
         <label> Mobil
-            <input type="text" />
+            <input type="text" name="person-phone" value="<?php echo $form['person']['phone']; ?>" />
         </label>
     </fieldset>
 
