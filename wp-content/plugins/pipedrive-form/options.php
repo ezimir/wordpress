@@ -66,7 +66,7 @@ class OptionsPage extends Options {
     public function getChoices($fields) {
         return array_map( function ( $field ) {
             $attributes = array(
-                'value' => (string) $field->id,
+                'value' => (string) (isSet( $field->key ) ? $field->key : $field->id ),
                 'title' => $field->name
             );
             if ( in_array( $field->field_type,  array('set', 'enum') ) ) {
