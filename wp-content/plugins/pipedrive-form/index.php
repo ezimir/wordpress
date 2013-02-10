@@ -46,6 +46,8 @@ function pipedrive_shortcode() {
 
         $organization = $pipedrive->getOrganization( $form['organization']['name'], (object) array(
             'owner_id' => $options->get( 'organization-owner' ),
+            $options->get( 'organization-relation' ) => $options->get( 'organization-relation-option' ),
+
             $options->get( 'organization-name' ) => $form['organization']['name'],
             $options->get( 'organization-address' ) => $form['organization']['address'],
             $options->get( 'organization-web' ) => $form['organization']['web']
