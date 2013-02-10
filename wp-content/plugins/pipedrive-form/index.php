@@ -24,11 +24,31 @@ function clean( $input ) {
 
 function pipedrive_shortcode() {
     $options = new Options();
-    $pipedrive = new Pipedrive( $options->get('api-token') );
+    $pipedrive = new Pipedrive( $options->get( 'api-token' ) );
+
+    $form = array(
+        'organization' => array(
+            'name' => '',
+            'address' => '',
+            'web' => ''
+        )
+    );
 
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-        $organization = $pipedrive->getOrganization( $_POST['organization'], (object) array(
-            'owner_id' => $options->get('organization-owner')
+        foreach ( $form as $name => $section ) {
+            foreach ( $section as $field => $default ) {
+                $value = clean( $_POST[$name . '-' . $field] );
+                if ($value) {
+                    $form[$name][$field] = $value;
+                }
+            }
+        }
+
+        $organization = $pipedrive->getOrganization( $form['organization']['name'], (object) array(
+            'owner_id' => $options->get( 'organization-owner' ),
+            $options->get( 'organization-name' ) => $form['organization']['name'],
+            $options->get( 'organization-address' ) => $form['organization']['address'],
+            $options->get( 'organization-web' ) => $form['organization']['web']
         ) );
         var_dump( $organization );
     }
@@ -54,13 +74,13 @@ function pipedrive_shortcode() {
         <legend> Koho zastupujete? </legend>
 
         <label> Názov spoločnosti
-            <input type="text" name="organization" />
+            <input type="text" name="organization-name" value="<?php echo $form['organization']['name']; ?>" />
         </label>
         <label> Sídlo
-            <input type="text" />
+            <input type="text" name="organization-address" value="<?php echo $form['organization']['address']; ?>" />
         </label>
         <label> Web
-            <input type="url" />
+            <input type="url" name="organization-web" value="<?php echo $form['organization']['web']; ?>" />
         </label>
     </fieldset>
 
