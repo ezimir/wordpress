@@ -8,8 +8,8 @@ class Pipedrive {
         $this->api_token = $api_token;
     }
 
-    public function getOrganization( $name, $defaults ) {
-        $response = $this->makeRequest('organizations/find', array(
+    public function getOrCreate( $object, $name, $defaults ) {
+        $response = $this->makeRequest( $object  . '/find', array(
             'term' => $name
         ));
 
@@ -17,7 +17,7 @@ class Pipedrive {
             return $response->data[0];
         }
 
-        $response = $this->makeRequest( 'organizations', $defaults, $post = true );
+        $response = $this->makeRequest( $object, $defaults, $post = true );
         return $response->data;
     }
 
