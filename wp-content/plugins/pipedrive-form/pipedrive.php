@@ -9,7 +9,7 @@ class Pipedrive {
     }
 
     public function find( $object, $name ) {
-        $response = $this->makeRequest( $object  . '/find', array(
+        $response = $this->makeRequest( $object . '/find', array(
             'term' => $name
         ));
 
@@ -31,18 +31,22 @@ class Pipedrive {
     }
 
     public function create( $object, $defaults ) {
-        $response = $this->makeRequest( $object, $defaults, $post = true );
+        $response = $this->makeRequest( $object, $defaults, 'post' );
 
         return $response->data;
     }
 
-    private function makeRequest( $endpoint, $params = array(), $post = false ) {
+    public function update( $object, $id, $data ) {
+        $response = $this->makeRequest( $object . '/' . $id, $data, 'put' );
+    }
+
+    private function makeRequest( $endpoint, $params = array(), $method = 'get' ) {
         $url = $this->api_url . $endpoint . '?api_token=' . $this->api_token;
         $params = http_build_query( $params );
         $options = array();
 
-        if ( $post ) {
-            $options['method'] = 'POST';
+        if ( $method !== 'get' ) {
+            $options['method'] = strtoupper($method);
             $options['content'] = $params;
         } elseif ( $params ) {
             $url .= '&' . $params;
