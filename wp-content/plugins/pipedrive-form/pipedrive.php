@@ -13,11 +13,12 @@ class Pipedrive {
             'term' => $name
         ));
 
-        if ( count( $response->data ) === 0 ) {
-            $response = $this->makeRequest( 'organizations', $defaults, $post = true );
+        if ( count( $response->data ) > 0 ) {
+            return $response->data[0];
         }
 
-        return $response->data[0];
+        $response = $this->makeRequest( 'organizations', $defaults, $post = true );
+        return $response->data;
     }
 
     public function getList( $object ) {
