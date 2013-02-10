@@ -8,21 +8,32 @@ class Pipedrive {
         $this->api_token = $api_token;
     }
 
-    public function getOrCreate( $object, $name, $defaults ) {
+    public function find( $object, $name ) {
         $response = $this->makeRequest( $object  . '/find', array(
             'term' => $name
         ));
 
-        if ( count( $response->data ) > 0 ) {
-            return $response->data[0];
-        }
-
-        $response = $this->makeRequest( $object, $defaults, $post = true );
         return $response->data;
     }
 
     public function getList( $object ) {
         return $this->makeRequest( $object )->data;
+    }
+
+    public function getOrCreate( $object, $name, $defaults ) {
+        $data = $this->find( $object, $name );
+
+        if ( count( $data ) > 0 ) {
+            return $data[0];
+        }
+
+        return $this->create( $object, $defaults );
+    }
+
+    public function create( $object, $defaults ) {
+        $response = $this->makeRequest( $object, $defaults, $post = true );
+
+        return $response->data;
     }
 
     private function makeRequest( $endpoint, $params = array(), $post = false ) {
