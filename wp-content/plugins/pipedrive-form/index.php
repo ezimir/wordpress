@@ -66,6 +66,17 @@ function pipedrive_shortcode() {
             $options->get( 'person-email' ) => $form['person']['email'],
             $options->get( 'person-phone' ) => $form['person']['phone']
         ) );
+
+        $deal = $pipedrive->create( 'deals', array(
+            'user_id' => $options->get( 'organization-owner' ),
+            'stage_id' => $options->get( 'deal-stage' ),
+
+            'title' => '"' . $organization->name . '" - web lead',
+            'org_id' => $organization->id,
+            'person_id' => $person->id
+        ) );
+
+        var_dump( $deal );
     }
     ob_start();
 ?>
