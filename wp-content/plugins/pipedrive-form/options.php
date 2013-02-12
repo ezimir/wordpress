@@ -33,6 +33,10 @@ class OptionsPage extends Options {
         $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
             $this->addField( $section, 'api-token', __( 'API token' ) );
 
+        $section = $this->addSection( 'email', __( 'Notification Email' ) );
+            $this->addField( $section, 'email-address', __( 'Email' ), 'text' );
+            $this->addField( $section, 'email-template', __( 'Template' ), 'textarea' );
+
         $section = $this->addSection( 'organization', __( 'Organization Fields' ) );
             $choices = $this->getChoices( $api->getList( 'users' ) );
             $this->addField( $section, 'organization-owner', __( 'Owner' ), 'select', $choices );
