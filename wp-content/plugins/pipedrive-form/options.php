@@ -132,6 +132,10 @@ class OptionsPage extends Options {
             echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ) . '" />';
         }
 
+        if ($type === 'textarea') {
+            echo '<textarea class="large-text" id="' . $id . '" name="' . $name . '" rows="10">' . esc_attr( $value ) . '</textarea>';
+        }
+
         if ($type === 'select') {
             echo '<select id="' . $id . '" name="' . $name . '">';
             echo '<option value=""> -- select -- </option>';
