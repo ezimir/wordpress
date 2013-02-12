@@ -93,13 +93,14 @@ class OptionsPage extends Options {
         );
     }
 
-    public function addField( $section, $id, $title, $type = 'text', $choices = array() ) {
+    public function addField( $section, $id, $title, $type = 'text', $choices = array(), $default = '' ) {
         $field = array(
             'id' => $id,
             'name' => $this->category . '[' . $id . ']',
             'title' => $title,
             'type' => $type,
             'value' => $this->options[$id],
+            'default' => $default
         );
         if ($type === 'select') {
             $field['choices'] = (object) $choices;
@@ -133,11 +134,11 @@ class OptionsPage extends Options {
         extract( $args );
 
         if ($type === 'text') {
-            echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ) . '" />';
+            echo '<input class="regular-text" type="text" id="' . $id . '" name="' . $name . '" value="' . esc_attr( $value ? $value : $default ) . '" />';
         }
 
         if ($type === 'textarea') {
-            echo '<textarea class="large-text" id="' . $id . '" name="' . $name . '" rows="10">' . esc_attr( $value ) . '</textarea>';
+            echo '<textarea class="large-text" id="' . $id . '" name="' . $name . '" rows="10">' . esc_attr( $value ? $value : $default ) . '</textarea>';
         }
 
         if ($type === 'select') {
