@@ -48,69 +48,48 @@ function pipedrive_shortcode() {
                 }
             }
         }
+        $form['organization']['relation'] = $options->get( 'organization-relation-option' );
 
-        $organization = $pipedrive->getOrCreate( 'organizations', $form['organization']['name'], array(
-            'owner_id' => $options->get( 'organization-owner' ),
-            $options->get( 'organization-relation' ) => $options->get( 'organization-relation-option' ),
-
-            $options->get( 'organization-name' ) => $form['organization']['name'],
-            $options->get( 'organization-address' ) => $form['organization']['address'],
-            $options->get( 'organization-web' ) => $form['organization']['web']
-        ) );
-
-        $email_attr = $options->get( 'person-email' );
-        $phone_attr = $options->get( 'person-phone' );
-        $person = $pipedrive->getOrCreate( 'persons', $form['person']['name'], array(
-            'owner_id' => $options->get( 'organization-owner' ),
-            'org_id' => $organization->id,
-
-            $options->get( 'person-name' ) => $form['person']['name'],
-            $email_attr => $form['person']['email'],
-            $phone_attr => $form['person']['phone']
-        ) );
-        $update = array();
-        if ( $form['person']['email'] ) {
-            $emails = $person->$email_attr;
-            if ( count( $emails ) === 1 && !$emails[0]->value) {
-                $person->$email_attr = array();
-            }
-            $emails = array_map( function ( $email ) {
-                return $email->value;
-            }, $person->$email_attr );
-            if ( !in_array( $form['person']['email'], $emails ) ) {
-                $update['email'] = $person->$email_attr;
-                $update['email'][] = array(
-                    'value' => $form['person']['email']
-                );
-            }
-        }
-        if ( $form['person']['phone'] ) {
-            $phones = $person->$phone_attr;
-            if ( count( $phones ) === 1 && !$phones[0]->value) {
-                $person->$phone_attr = array();
-            }
-            $phones = array_map( function ( $phone ) {
-                return $phone->value;
-            }, $person->$phone_attr );
-            if ( !in_array( $form['person']['phone'], $phones ) ) {
-                $update['phone'] = $person->$phone_attr;
-                $update['phone'][] = array(
-                    'value' => $form['person']['phone']
-                );
-            }
-        }
-        if ( count( $update ) > 0 ) {
-            $pipedrive->update( 'persons', $person->id, $update );
+        $attrs = array();
+        $owner = $options->get( 'organization-owner' );
+        if ( $owner ) {
+            $attrs['owner_id'] = $owner;
         }
 
-        $deal = $pipedrive->create( 'deals', array(
-            'user_id' => $options->get( 'organization-owner' ),
-            'stage_id' => $options->get( 'deal-stage' ),
+        $organization_attrs = $attrs;
+        $fields = array( 'relation', 'name', 'address', 'web' );
+        foreach ( $fields as $field ) {
+            $attr = $options->get( 'organization-' . $field );
+            if ( $attr ) {
+                $organization_attrs[$attr] = $form['organization'][$field];
+            }
+        }
+        $organization = $pipedrive->getOrCreate( 'organizations', $form['organization']['name'], $organization_attrs );
 
+        $person_attrs = $attrs;
+        $person_attrs['org_id'] = $organization->id;
+        $fields = array( 'name', 'email', 'phone' );
+        foreach ( $fields as $field ) {
+            $attr = $options->get( 'person-' . $field );
+            if ( $attr ) {
+                $person_attrs[$attr] = $form['person'][$field];
+            }
+        }
+        $person = $pipedrive->getOrCreate( 'persons', $form['person']['name'], $person_attrs );
+
+        $deal_attrs = array(
             'title' => '"' . $organization->name . '" - web lead',
             'org_id' => $organization->id,
             'person_id' => $person->id
-        ) );
+        );
+        if ( $owner ) {
+            $deal_attrs['user_id'] = $owner;
+        }
+        $stage = $options->get( 'deal-stage' );
+        if ( $stage ) {
+            $deal_attrs['stage_id'] = $stage;
+        }
+        $deal = $pipedrive->create( 'deals', $deal_attrs );
 
         var_dump( $deal );
     }
