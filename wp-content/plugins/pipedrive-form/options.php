@@ -1,6 +1,28 @@
 <?php
 
 
+$email_template = 'Hey You!
+
+Someone wants to work with you, here\'s some info:
+
+Person: {person.link}
+    Name: {person.name}
+    Email: {person.name}
+    Phone: {person.phone}
+
+Organization: {organization.link}
+    Name: {organization.name}
+    Address: {organization.address}
+    Web: {organization.web}
+
+Here\'s a deal in Pipedrive CRM:
+    {deal.link}
+
+Get back to them soon!
+
+WP ' . get_bloginfo( 'name' );
+
+
 class Options {
     var $category = 'pipedrive-settings';
     var $options;
@@ -28,6 +50,8 @@ class OptionsPage extends Options {
     }
 
     public function buildFields() {
+        global $email_template;
+
         $api = new Pipedrive( $this->get('api-token') );
 
         $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
@@ -35,7 +59,8 @@ class OptionsPage extends Options {
 
         $section = $this->addSection( 'email', __( 'Notification Email' ) );
             $this->addField( $section, 'email-address', __( 'Email' ), 'text' );
-            $this->addField( $section, 'email-template', __( 'Template' ), 'textarea' );
+            $this->addField( $section, 'email-subject', __( 'Subject' ), 'text', false, 'WP: {deal.name}' );
+            $this->addField( $section, 'email-template', __( 'Template' ), 'textarea', false, $email_template );
 
         $section = $this->addSection( 'organization', __( 'Organization Fields' ) );
             $choices = $this->getChoices( $api->getList( 'users' ) );
