@@ -55,44 +55,47 @@ class OptionsPage extends Options {
     public function buildFields() {
         global $email_template;
 
-        $api = new Pipedrive( $this->get('api-token') );
-
         $section = $this->addSection( 'api', __( 'Pipedrive API' ) );
             $this->addField( $section, 'api-token', __( 'API token' ) );
 
-        $section = $this->addSection( 'email', __( 'Notification Email' ) );
-            $this->addField( $section, 'email-address', __( 'Email' ), 'text' );
-            $this->addField( $section, 'email-subject', __( 'Subject' ), 'text', false, 'WP: {deal.name}' );
-            $this->addField( $section, 'email-template', __( 'Template' ), 'textarea', false, $email_template );
+        $api_token = $this->get('api-token');
+        if ( $api_token ) {
+            $api = new Pipedrive( $api_token );
 
-        $section = $this->addSection( 'organization', __( 'Organization Fields' ) );
-            $choices = $this->getChoices( $api->getList( 'users' ) );
-            $this->addField( $section, 'organization-owner', __( 'Owner' ), 'select', $choices );
+            $section = $this->addSection( 'email', __( 'Notification Email' ) );
+                $this->addField( $section, 'email-address', __( 'Email' ), 'text' );
+                $this->addField( $section, 'email-subject', __( 'Subject' ), 'text', false, 'WP: {deal.name}' );
+                $this->addField( $section, 'email-template', __( 'Template' ), 'textarea', false, $email_template );
 
-            $fields = $api->getList( 'organizationFields' );
-            $sets = array_filter( $fields, function ( $field ) {
-                return in_array( $field->field_type,  array('set', 'enum') );
-            } );
-            $choices = $this->getChoices( $sets );
-            $this->addField( $section, 'organization-relation', __( 'Relation' ), 'select', $choices );
+            $section = $this->addSection( 'organization', __( 'Organization Fields' ) );
+                $choices = $this->getChoices( $api->getList( 'users' ) );
+                $this->addField( $section, 'organization-owner', __( 'Owner' ), 'select', $choices );
 
-            $varchars = array_filter( $fields, function ( $field ) {
-                return $field->field_type === 'varchar';
-            } );
-            $choices = $this->getChoices( $varchars );
-            $this->addField( $section, 'organization-name', __( 'Name' ), 'select', $choices );
-            $this->addField( $section, 'organization-address', __( 'Address' ), 'select', $choices );
-            $this->addField( $section, 'organization-web', __( 'Web' ), 'select', $choices );
+                $fields = $api->getList( 'organizationFields' );
+                $sets = array_filter( $fields, function ( $field ) {
+                    return in_array( $field->field_type,  array('set', 'enum') );
+                } );
+                $choices = $this->getChoices( $sets );
+                $this->addField( $section, 'organization-relation', __( 'Relation' ), 'select', $choices );
 
-        $section = $this->addSection( 'person-fields', __( 'Person Fields' ) );
-            $choices = $this->getChoices( $api->getList( 'personFields' ) );
-            $this->addField( $section, 'person-name', __( 'Name' ), 'select', $choices );
-            $this->addField( $section, 'person-email', __( 'Email' ), 'select', $choices );
-            $this->addField( $section, 'person-phone', __( 'Phone' ), 'select', $choices );
+                $varchars = array_filter( $fields, function ( $field ) {
+                    return $field->field_type === 'varchar';
+                } );
+                $choices = $this->getChoices( $varchars );
+                $this->addField( $section, 'organization-name', __( 'Name' ), 'select', $choices );
+                $this->addField( $section, 'organization-address', __( 'Address' ), 'select', $choices );
+                $this->addField( $section, 'organization-web', __( 'Web' ), 'select', $choices );
 
-        $section = $this->addSection( 'deal-fields', __( 'Deal Fields' ) );
-            $choices = $this->getChoices( $api->getList( 'stages' ) );
-            $this->addField( $section, 'deal-stage', __( 'Stage' ), 'select', $choices );
+            $section = $this->addSection( 'person-fields', __( 'Person Fields' ) );
+                $choices = $this->getChoices( $api->getList( 'personFields' ) );
+                $this->addField( $section, 'person-name', __( 'Name' ), 'select', $choices );
+                $this->addField( $section, 'person-email', __( 'Email' ), 'select', $choices );
+                $this->addField( $section, 'person-phone', __( 'Phone' ), 'select', $choices );
+
+            $section = $this->addSection( 'deal-fields', __( 'Deal Fields' ) );
+                $choices = $this->getChoices( $api->getList( 'stages' ) );
+                $this->addField( $section, 'deal-stage', __( 'Stage' ), 'select', $choices );
+        }
     }
 
     public function getChoices($fields) {
