@@ -22,7 +22,20 @@ function clean( $input ) {
     return $input;
 }
 
+function send_email( $data ) {
+    extract( $data );
+
+    preg_match_all( '/{([\w.]+)}/', $template, $placeholders );
+    foreach( $placeholders[1] as $placeholder ) {
+        $template = str_replace( '{' . $placeholder . '}', $values[$placeholder], $template );
+    }
+
+    var_dump($template);
+}
+
 function pipedrive_shortcode() {
+    $pipedrive_app = 'https://app.pipedrive.com/';
+
     $options = new Options();
     $pipedrive = new Pipedrive( $options->get( 'api-token' ) );
 
@@ -36,6 +49,9 @@ function pipedrive_shortcode() {
             'name' => '',
             'email' => '',
             'phone' => ''
+        ),
+        'notes' => array(
+            'text' => ''
         )
     );
 
@@ -56,15 +72,19 @@ function pipedrive_shortcode() {
             $attrs['owner_id'] = $owner;
         }
 
+        $template_values = array();
+
         $organization_attrs = $attrs;
         $fields = array( 'relation', 'name', 'address', 'web' );
         foreach ( $fields as $field ) {
             $attr = $options->get( 'organization-' . $field );
             if ( $attr ) {
                 $organization_attrs[$attr] = $form['organization'][$field];
+                $template_values['organization.' . $field] = $organization_attrs[$attr];
             }
         }
         $organization = $pipedrive->getOrCreate( 'organizations', $form['organization']['name'], $organization_attrs );
+        $template_values['organization.link'] = $pipedrive_app . 'org/details/' . $organization->id;
 
         $person_attrs = $attrs;
         $person_attrs['org_id'] = $organization->id;
@@ -73,9 +93,11 @@ function pipedrive_shortcode() {
             $attr = $options->get( 'person-' . $field );
             if ( $attr ) {
                 $person_attrs[$attr] = $form['person'][$field];
+                $template_values['person.' . $field] = $person_attrs[$attr];
             }
         }
         $person = $pipedrive->getOrCreate( 'persons', $form['person']['name'], $person_attrs );
+        $template_values['person.link'] = $pipedrive_app . 'person/details/' . $person->id;
 
         $deal_attrs = array(
             'title' => '"' . $organization->name . '" - web lead',
@@ -90,8 +112,19 @@ function pipedrive_shortcode() {
             $deal_attrs['stage_id'] = $stage;
         }
         $deal = $pipedrive->create( 'deals', $deal_attrs );
+        $template_values['deal.link'] = $pipedrive_app . 'deal/view/' . $deal->id;
 
-        var_dump( $deal );
+        $template_values['notes'] = $form['notes']['text'];
+
+        $address = $options->get( 'email-address' );
+        if ( $address ) {
+            send_email( array(
+                'address' => $address,
+                'subject' => $options->get( 'email-subject' ),
+                'template' => $options->get( 'email-template' ),
+                'values' => $template_values
+            ) );
+        }
     }
     ob_start();
 ?>
@@ -130,7 +163,7 @@ function pipedrive_shortcode() {
         <legend> Ako vám pomôžeme? </legend>
 
         <label>
-            <textarea></textarea>
+            <textarea name="notes-text"><?php echo $form['notes']['text']; ?></textarea>
         </label>
     </fieldset>
 
