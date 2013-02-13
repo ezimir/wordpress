@@ -55,6 +55,9 @@ function pipedrive_shortcode() {
         )
     );
 
+    $succes = false;
+    $errors = array();
+
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
         foreach ( $form as $name => $section ) {
             foreach ( $section as $field => $default ) {
@@ -118,18 +121,39 @@ function pipedrive_shortcode() {
 
         $address = $options->get( 'email-address' );
         if ( $address ) {
-            send_email( array(
+            $sent = send_email( array(
                 'address' => $address,
                 'subject' => $options->get( 'email-subject' ),
                 'template' => $options->get( 'email-template' ),
                 'values' => $template_values
             ) );
+            if ( !$sent ) {
+                $errors[] = 'Couldn\'t send email.';
+            } else {
+                $success = true;
+            }
         }
     }
     ob_start();
 ?>
 <link rel="stylesheet" href="<?php echo plugins_url('pipedrive-form/style.css'); ?>" />
+<?php if ( $success ) { ?>
+<div class="pipedrive">
+    <div class="pipedrive-message success"> Success! We've been notified. </div>
+
+    Thank you for your inquiry. We will get back to you soon!
+</div>
+<?php } else { ?>
 <form class="pipedrive" method="post">
+<?php
+    if ( count( $errors ) > 0 ) {
+        echo '<div class="pipedrive-message error">';
+        foreach ( $errors as $error ) {
+            echo $error . '<br />';
+        }
+        echo '</div>';
+    }
+?>
     <fieldset>
         <legend> Kto ste? </legend>
 
@@ -169,7 +193,10 @@ function pipedrive_shortcode() {
 
     <button> Odoslať </button>
 </form>
+<?php } ?>
+
 <?php
+
     $result = ob_get_contents();
     ob_end_clean();
     return $result;
