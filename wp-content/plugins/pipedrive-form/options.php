@@ -18,6 +18,9 @@ Organization: {organization.link}
 Here\'s a deal in Pipedrive CRM:
     {deal.link}
 
+Here\'s what they wrote:
+{notes}
+
 Get back to them soon!
 
 WP ' . get_bloginfo( 'name' );
