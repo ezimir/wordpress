@@ -22,13 +22,22 @@ function clean( $input ) {
     return $input;
 }
 
-function send_email( $data ) {
-    extract( $data );
+function parse_template( $template, $values) {
+    $result = $template;
 
     preg_match_all( '/{([\w.]+)}/', $template, $placeholders );
     foreach( $placeholders[1] as $placeholder ) {
-        $template = str_replace( '{' . $placeholder . '}', $values[$placeholder], $template );
+        $result = str_replace( '{' . $placeholder . '}', $values[$placeholder], $result );
     }
+
+    return $result;
+}
+
+function send_email( $data ) {
+    extract( $data );
+
+    $subject = parse_template( $subject, $values );
+    $template = parse_template( $template, $values );
 
     return wp_mail( $address, $subject, $template );
 }
