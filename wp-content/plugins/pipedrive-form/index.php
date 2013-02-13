@@ -115,6 +115,7 @@ function pipedrive_shortcode() {
             $deal_attrs['stage_id'] = $stage;
         }
         $deal = $pipedrive->create( 'deals', $deal_attrs );
+        $template_values['deal.name'] = $deal->title;
         $template_values['deal.link'] = $pipedrive_app . 'deal/view/' . $deal->id;
 
         $template_values['notes'] = $form['notes']['text'];
