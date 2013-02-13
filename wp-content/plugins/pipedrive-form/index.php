@@ -30,7 +30,7 @@ function send_email( $data ) {
         $template = str_replace( '{' . $placeholder . '}', $values[$placeholder], $template );
     }
 
-    var_dump($template);
+    return wp_mail( $address, $subject, $template );
 }
 
 function pipedrive_shortcode() {
