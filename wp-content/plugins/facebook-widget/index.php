@@ -34,7 +34,6 @@ class FacebookWidget extends WP_Widget {
         $instance['profile'] = $new_instance['profile'];
         $fb = json_decode(file_get_contents('https://graph.facebook.com/'.$instance['profile']));
         $instance['fb_name'] = $fb->name;
-        $instance['fb_picture'] = $fb->picture;
         $instance['fb_about'] = $fb->about;
         $instance['fb_link'] = $fb->link;
         return $instance;
@@ -53,7 +52,7 @@ class FacebookWidget extends WP_Widget {
         //Vždy čerstvé informácie a pikošky na našej stránke na Facebooku
 
         echo '<div class="fb">';
-        echo '<a href="' . $instance['fb_link'] .'"><img src="' . $instance['fb_picture'] .'" /></a>';
+        echo '<a href="' . $instance['fb_link'] .'"><img src="https://graph.facebook.com/' . $instance['profile'] .'/picture/normal" /></a>';
         echo '<a href="' . $instance['fb_link'] .'"><strong>' . $instance['fb_name'] . '</strong></a>';
         echo '<p>' . $instance['fb_about'] . '</p>';
         echo '<iframe src="//www.facebook.com/plugins/like.php?href=' . urlencode($instance['fb_link']) . '&amp;locale=' . get_locale() . '&amp;send=false&amp;layout=button_count&amp;width=155&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=21&amp;appId=349582238426804" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:155px; height:21px;" allowTransparency="true"></iframe>';
