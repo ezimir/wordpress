@@ -1,0 +1,309 @@
+/*
+Theme Name: Mazal Tov
+Theme URI: http://mazaltov.sk
+Description: Custom theme for Mazal Tov Festival 2012.
+Author: Svetozár Šomšák, Martin Tóth
+Version: 1.0
+*/
+
+
+html, body {
+    background: #fff;
+    margin-top: !important;
+}
+html, body, p {
+    font-family: "Georgia", sans-serif;
+}
+
+body {
+    background: url("images/line.png") no-repeat top center;
+    margin-top: 5px;
+}
+
+#shadow-top {
+    background: url("images/shadow-top.png") no-repeat top center;
+}
+#shadow-bottom {
+    background: url("images/shadow-bottom.png") no-repeat bottom center;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+
+#header {
+    background: url("images/header.png") no-repeat bottom left;
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+}
+    #branding {
+        padding-top: 30px;
+    }
+        #blog-title {
+            background: url("images/mazaltov.png") no-repeat top left;
+            cursor: pointer;
+            display: block;
+            float: left;
+            font-size: 2em;
+            height: 250px;
+            margin: -20px 0 0 28px;
+            width: 260px;
+            text-indent: -9999px;
+        }
+            #blog-title:hover {
+                opacity: .85;
+            }
+
+        #blog-description {
+            display: none;
+            font-size: 1.35em;
+            line-height: 1.5em;
+        }
+
+    #random_header_pic {
+        position: absolute;
+        right: 1em;
+        top: 30px;
+    }
+
+
+    #menu-main {
+        bottom: 0;
+        list-style: none;
+        margin-bottom: 0;
+        position: absolute;
+        right: 7em;
+    }
+        .menu li {
+            float: left;
+            margin-right: 1em;
+        }
+            .menu li a {
+                color: #009adb;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+        #menu-main li {
+            background: url("images/button-left.png") repeat-x top left;
+            height: 45px;
+        }
+            #menu-main li a {
+                display: block;
+                float: left;
+                font-size: 17px;
+                line-height: 30px;
+                margin: 15px 0 0 25px;
+            }
+            #menu-main li .btn-after {
+                background: url("images/button-right.png") no-repeat top right;
+                display: block;
+                float: right;
+                height: 45px;
+                left: 25px;
+                margin-left: -25px;
+                position: relative;
+                width: 25px;
+            }
+
+        #menu-main li.current-menu-item,
+        #menu-main li:hover {
+            background-image: url("images/button-left-white.png");
+        }
+            #menu-main li.current-menu-item .btn-after,
+            #menu-main li:hover .btn-after {
+                background-image: url("images/button-right-white.png");
+            }
+
+    #menu-footer {
+        list-style: none;
+        margin-bottom: 0;
+        text-align: center;
+    }
+        #menu-footer li {
+            color: #009adb;
+            display: inline;
+            float: none;
+            margin-right: 0;
+        }
+            #menu-footer li a {
+                font-size: 12px;
+            }
+            #menu-footer li:after {
+                content: "|";
+                margin: 0 1em;
+            }
+            #menu-footer li:last-child:after {
+                display: none;
+            }
+
+    #qtranslate-chooser {
+        bottom: -2px;
+        font-size: .9em;
+        list-style: none;
+        position: absolute;
+        right: 0;
+    }
+        #qtranslate-chooser li.active {
+            display: none;
+        }
+
+#main {
+    padding: 2em 0;
+}
+
+#content {
+    padding: 0 1em;
+}
+
+.subtitle-link {
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.entry-title {
+    margin: .5em 0 1em;
+}
+    .entry-title a {
+        color: #222;
+        font-size: 36px;
+    }
+
+
+.entry-meta,
+.entry-utility {
+    display: none;
+}
+
+
+.entry-content h4 {
+    font-size: 22px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.4em;
+    margin-bottom: 1em;
+}
+    .kontakt .entry-content h4 {
+        margin-bottom: 0;
+    }
+
+.category .post {
+    margin-bottom: 2em;
+}
+.category .post .entry-title {
+    font-weight: normal;
+    margin: 0;
+}
+.category .post .entry-title a {
+    font-size: 24px;
+    font-style: italic;
+}
+.category .post .entry-subtitle {
+    color: #009adb;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: .75em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.entry-content p {
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+
+.widget-container {
+    color: #009adb;
+    list-style: none;
+    margin-bottom: 3.5em;
+}
+    .widget-title {
+        font-size: 21px;
+        font-weight: normal;
+        margin-bottom: .5em;
+    }
+    .widget-container, .widget-container p {
+        font-size: 12px;
+    }
+
+.widget-area .xoxo {
+    margin-left: 0;
+}
+.widget-area .well {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 10px;
+}
+    .widget-area .well form {
+        margin: 0;
+    }
+    .widget-area .well input[type=text] {
+        width: 95%;
+    }
+    .mc_signup_submit,
+    .widget-area .well input[type=submit] {
+        margin-top: .5em;
+        text-align: left !important;
+    }
+    #mc_message {
+        margin-bottom: 1em;
+    }
+
+
+.PartnersWidget .partner,
+.PartnersList .partner {
+    border-radius: .5em;
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    width: 90px;
+}
+.PartnersWidget a:hover,
+.PartnersList a:hover {
+    background: rgba(0, 0, 0, .1);
+}
+.PartnersList {
+    overflow: hidden;
+}
+    .PartnersList .partner {
+        float: left;
+        line-height: 100px;
+    }
+
+.FacebookWidget {
+    overflow: hidden;
+}
+    .FacebookWidget .fb strong, .FacebookWidget .fb p {
+        color: #666;
+        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        font-size: 12px;
+    }
+    .FacebookWidget img {
+        float: left;
+        margin-right: .5em;
+        vertical-align: top;
+        width: 20%;
+    }
+    .FacebookWidget iframe {
+        float: right;
+    }
+
+
+#site-info {
+    background: url("images/line.png") no-repeat top center;
+    color: #009adb;
+    font-size: 12px;
+    padding-top: 20px;
+    margin: 5px 0 35px;
+    text-align: center;
+}
+
