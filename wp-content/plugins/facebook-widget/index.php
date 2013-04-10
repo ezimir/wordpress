@@ -19,7 +19,7 @@ class FacebookWidget extends WP_Widget {
     }
 
     function form($instance) {
-        $instance = wp_parse_args((array) $instance, array( 'title' => '', 'mediatag' => '' ));
+        $instance = wp_parse_args((array) $instance, array( 'title' => '' ));
         $title = $instance['title'];
         $profile = $instance['profile'];
     ?>
