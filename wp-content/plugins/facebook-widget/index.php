@@ -45,11 +45,11 @@ class FacebookWidget extends WP_Widget {
         echo $before_widget;
         $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 
-        if (!empty($title))
-        echo $before_title . $title . $after_title;;
+        if (!empty($title)) {
+            echo $before_title . $title . $after_title;;
+        }
 
         echo '<p> ' . __('Up-to-date information and gossip on our Facebook website', 'facebookwidget') . ': </p>';
-        //Vždy čerstvé informácie a pikošky na našej stránke na Facebooku
 
         echo '<div class="fb">';
         echo '<a href="' . $instance['fb_link'] .'"><img src="https://graph.facebook.com/' . $instance['profile'] .'/picture/normal" /></a>';
