@@ -15,7 +15,7 @@ add_action('plugins_loaded', 'facebookwidget_internationalization');
 class FacebookWidget extends WP_Widget {
     function FacebookWidget() {
         $widget_ops = array('classname' => 'FacebookWidget', 'description' => __('Facebook profile and Like button', 'facebookwidget'));
-        $this->WP_Widget('FacebookWidget', __('Facebook', 'partnerswidget'), $widget_ops);
+        $this->WP_Widget('FacebookWidget', __('Facebook', 'facebookwidget'), $widget_ops);
     }
 
     function form($instance) {
