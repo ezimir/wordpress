@@ -307,6 +307,27 @@ a {
     }
 
 
+.widget-title {
+    background: url() no-repeat left center;
+    padding-left: 30px;
+}
+.PartnersWidget .widget-title {
+    background-image: url("images/icons/partners.png");
+}
+.FacebookWidget .widget-title {
+    background-image: url("images/icons/facebook.png");
+}
+.widget_mailchimpsf_widget .widget-title {
+    background-image: url("images/icons/mailinglist.png");
+}
+.widget_support .widget-title {
+    background-image: url("images/icons/support.png");
+}
+.widget_tickets .widget-title {
+    background-image: url("images/icons/tickets.png");
+}
+
+
 #site-info {
     background: url("images/line.png") no-repeat top center;
     color: #7c187a;
