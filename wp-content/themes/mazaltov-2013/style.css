@@ -262,6 +262,58 @@ a {
 }
 
 
+.content-highlights {
+    background: url("images/highlight/repeat.png") repeat-y top left;
+    margin-bottom: 4em;
+}
+    .content-highlights h4 {
+        background: url("images/highlight/top.png") no-repeat top left;
+        height: 52px;
+        font-size: 1.85em;
+        font-style: normal;
+        margin-top: 0;
+        padding: 5px 0 0 60px;
+    }
+    .content-highlights h4:before {
+        background: no-repeat center center;
+        content: " ";
+        display: block;
+        float: left;
+        margin: -3px -59px;
+        height: 40px;
+        width: 40px;
+    }
+        .content-highlights.news h4:before, .content-highlights.novinky h4:before {
+            background-image: url("images/highlight/news.png");
+        }
+        .content-highlights.references h4:before, .content-highlights.referencie h4:before {
+            background-image: url("images/highlight/references.png");
+        }
+
+        .content-highlighted {
+            margin-left: 1em;
+            overflow: hidden;
+        }
+            .content-highlighted h5 {
+                color: #7d187a;
+                font-size: 1.2em;
+                margin: 0;
+            }
+            .content-highlighted p {
+                margin-top: .7em;
+            }
+                .content-highlighted p a {
+                    margin-left: 1em;
+                    white-space: nowrap;
+                }
+
+
+.wp-post-image {
+    float: left;
+    margin: 0 1em 1em 0;
+}
+
+
 .widget-container {
     background-color: #f9f9f9;
     border: 1px solid #b3b3b3;
@@ -345,7 +397,7 @@ a {
 
 
 .widget-title {
-    background: url() no-repeat left center;
+    background: no-repeat left center;
     padding-left: 30px;
 }
 .PartnersWidget .widget-title {
