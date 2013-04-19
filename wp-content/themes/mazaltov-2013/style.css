@@ -152,6 +152,15 @@ a {
                 background-image: url("images/button-right-white.png");
             }
 
+        #menu-main .menu-item.home_icon a {
+            background: url("images/icons/home.png") no-repeat center center;
+            height: 20px;
+            margin-top: 20px;
+            overflow: hidden;
+            text-indent: -9999px;
+            width: 20px;
+        }
+
     #menu-footer {
         list-style: none;
         margin-bottom: 0;
