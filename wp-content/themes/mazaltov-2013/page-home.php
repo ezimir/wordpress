@@ -74,7 +74,11 @@ Template Name: Home with Highlights
                                     <h5> <?php _e( $higlighted_post->post_title ); ?> </h5>
                                     <strong> /<?php echo get_the_time( 'd.m.Y', $higlighted_post ); ?>/ </strong>
 
-                                    <p> content </p>
+                                    <p> <?php echo wp_trim_words(
+                                        __( $higlighted_post->post_content ),
+                                        $num_words = 21,
+                                        $more = '<a href="' . get_permalink( $higlighted_post->ID ) . '">&raquo; ' . __( 'read more', 'mazaltov' ) . '</a>'
+                                    ); ?> </p>
                                 </div><!-- .content-highlighted (post wrap) -->
         <?php } ?>
                             </div><!-- .content-highlights (category wrap) -->
