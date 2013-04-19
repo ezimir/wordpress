@@ -72,9 +72,37 @@ a {
 
     #random_header_pic {
         position: absolute;
+        height: 230px;
         right: 1em;
-        top: 30px;
+        top: 50px;
+        width: 640px;
     }
+
+
+    #menu-top {
+        font-size: .85em;
+        position: absolute;
+        right: 0px;
+        top: 20px;
+        white-space: nowrap;
+    }
+        #menu-top .menu {
+            float: left;
+            list-style: none;
+        }
+            #menu-top .menu + .menu {
+                margin-left: 0;
+            }
+            #menu-top .menu li a {
+                margin-right: .5em;
+            }
+
+            #menu-top .language-selector li a {
+                margin-right: 0;
+            }
+                #menu-top .language-selector li a.active {
+                    text-decoration: underline;
+                }
 
 
     #menu-main {

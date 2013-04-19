@@ -33,14 +33,20 @@
                 <h1 id="blog-description"><?php echo str_replace('|', '<br />', get_bloginfo( 'description' )) ?></h1>
             </div><!-- #branding -->
 
+            <div id="menu-top">
+                <?php wp_nav_menu( array( 'theme_location' => 'top', 'sort_column' => 'menu_order', 'container' => false, 'after' => ' | ' ) ); ?>
+                <ul class="menu language-selector">
+                    <li class="menu-item">
+                        <?php $current_url = home_url( add_query_arg( array(), $wp->request ) );?>
+                        <a href="<?php echo qtrans_convertURL( $current_url , 'sk' ); ?>/" <?php if ( qtrans_getLanguage() == 'sk') echo 'class="active"'; ?>>SK</a> /
+                        <a href="<?php echo qtrans_convertURL( $current_url , 'en' ); ?>/" <?php if ( qtrans_getLanguage() == 'en') echo 'class="active"'; ?>>EN</a>
+                    </li>
+                </ul>
+            </div><!-- #menu-top -->
+
             <img id="random_header_pic" src="<?php echo get_random_header_image_from_media('header') ?>" />
 
-            <div id="access">
-                <?php wp_nav_menu( array( 'theme_location' => 'main', 'sort_column' => 'menu_order', 'container' => false, 'menu_id' => 'menu-main', 'after' => '<i class="btn-after"></i>' ) ); ?>
-
-<?php qtrans_generateLanguageSelectCode(); ?>
-            </div><!-- #access -->
-
+            <?php wp_nav_menu( array( 'theme_location' => 'main', 'sort_column' => 'menu_order', 'container' => false, 'menu_id' => 'menu-main', 'after' => '<i class="btn-after"></i>' ) ); ?>
         </div><!-- #masthead -->
     </div><!-- #header -->
 

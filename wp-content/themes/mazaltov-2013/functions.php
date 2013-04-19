@@ -79,6 +79,7 @@ function get_random_header_image_from_media($mediatag) {
 
 add_theme_support( 'menus' );
 
+register_nav_menu('top', 'Malé menu v hlavičke');
 register_nav_menu('main', 'Hlavné menu v hlavičke');
 register_nav_menu('footer', 'Hlavné menu v pätičke');
 
