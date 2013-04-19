@@ -78,6 +78,7 @@ function get_random_header_image_from_media( $mediatag ) {
 
 
 add_theme_support( 'menus' );
+add_theme_support( 'post-thumbnails' );
 
 register_nav_menu( 'top', __( 'Top menu in header', 'mazaltov' ) );
 register_nav_menu( 'main', __( 'Main menu in header', 'mazaltov' ) );
