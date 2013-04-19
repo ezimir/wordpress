@@ -9,8 +9,8 @@
 
     <div id="site-info">
         <span>Arthea, s.r.o. 2012</span>,
-        <span><? _e('[:sk]dizajn[:en]design'); ?> Šomšák 2012</span>,
-        <span><? _e('[:sk]šablóna[:en]template'); ?> Martin Tóth 2012</span>
+        <span><? _e('design', 'mazaltov'); ?> Šomšák 2012</span>,
+        <span><? _e('template', 'mazaltov'); ?> Martin Tóth 2012</span>
     </div><!-- #site-info -->
 </div><!-- #footer -->
 </body>

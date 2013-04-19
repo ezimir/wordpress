@@ -6,8 +6,8 @@ load_theme_textdomain( 'mazaltov', TEMPLATEPATH . '/languages' );
 
 // Get the page number
 function get_page_number() {
-    if ( get_query_var('paged') ) {
-        print ' | ' . __( 'Page ' , 'mazaltov') . get_query_var('paged');
+    if ( get_query_var( 'paged' ) ) {
+        print ' | ' . __( 'Page ' , 'mazaltov' ) . get_query_var( 'paged' );
     }
 } // end get_page_number
 
@@ -17,12 +17,12 @@ function get_page_number() {
 function theme_widgets_init() {
     // Area 1
     register_sidebar( array (
-    'name' => __('Primary Widget Area', 'mazaltov'),
-    'id' => 'primary_widget_area',
-    'before_widget' => '<li id="%1$s" class="widget-container well %2$s">',
-    'after_widget' => "</li>",
-    'before_title' => '<h3 class="widget-title">',
-    'after_title' => '</h3>',
+        'name' => __( 'Primary Widget Area', 'mazaltov' ),
+        'id' => 'primary_widget_area',
+        'before_widget' => '<li id="%1$s" class="widget-container well %2$s">',
+        'after_widget' => "</li>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
   ) );
 } // end theme_widgets_init
 
@@ -40,7 +40,7 @@ if ( isset( $_GET['activated'] ) ) {
 
 
 // Check for static widgets in widget-ready areas
-function is_sidebar_active( $index ){
+function is_sidebar_active( $index ) {
   global $wp_registered_sidebars;
 
   $widgetcolums = wp_get_sidebars_widgets();
@@ -51,9 +51,9 @@ function is_sidebar_active( $index ){
 } // end is_sidebar_active
 
 
-if (!function_exists('disableAdminBar')) {
+if ( !function_exists( 'disableAdminBar' ) ) {
 
-    function disableAdminBar(){
+    function disableAdminBar() {
         remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
 
         function remove_admin_bar_style_frontend() { // css override for the frontend
@@ -63,24 +63,24 @@ if (!function_exists('disableAdminBar')) {
             </style>';
         }
 
-        add_filter('wp_head','remove_admin_bar_style_frontend', 99);
+        add_filter( 'wp_head','remove_admin_bar_style_frontend', 99 );
     }
 }
 
-add_action('init','disableAdminBar');
+add_action( 'init', 'disableAdminBar' );
 
 
-function get_random_header_image_from_media($mediatag) {
-    $media = get_attachments_by_media_tags('media_tags=' . $mediatag);
-    $random = array_rand($media);
+function get_random_header_image_from_media( $mediatag ) {
+    $media = get_attachments_by_media_tags( 'media_tags=' . $mediatag );
+    $random = array_rand( $media );
     return $media[$random]->guid;
 }
 
 
 add_theme_support( 'menus' );
 
-register_nav_menu('top', 'Malé menu v hlavičke');
-register_nav_menu('main', 'Hlavné menu v hlavičke');
-register_nav_menu('footer', 'Hlavné menu v pätičke');
+register_nav_menu( 'top', __( 'Top menu in header', 'mazaltov' ) );
+register_nav_menu( 'main', __( 'Main menu in header', 'mazaltov' ) );
+register_nav_menu( 'footer', __( 'Main menu v footer', 'mazaltov') );
 
 ?>

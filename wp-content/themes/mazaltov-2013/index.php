@@ -6,7 +6,7 @@
     <div id="content" class="<?php echo $pagename; ?><?php if (is_category()) { echo 'category'; } ?>">
 
 <?php if (is_category()) { ?>
-        <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('[:en]Jewish Culture Festival Mazal Tov[:sk]Festival Židovskej Kultúry Mazal Tov'); ?></a>
+        <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('Jewish Culture Festival Mazal Tov', 'mazaltov'); ?></a>
         <h2 class="entry-title"> <a href="<?php echo get_category_link(get_the_category()->cat_ID); ?>"><?php single_cat_title(); ?></a> </h2>
 <?php } ?>
 
@@ -19,7 +19,7 @@
 
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <?php if (!is_category()) { ?>
-                    <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('[:en]Jewish Culture Festival[:sk]Festival Židovskej Kultúry'); ?> <?php if (!is_front_page()) { echo 'Mazal Tov'; } ?></a>
+                    <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('Jewish Culture Festival', 'mazaltov'); ?> <?php if (!is_front_page()) { echo 'Mazal Tov'; } ?></a>
 <?php } ?>
 <?php
     $subtitle = __(get_post_meta($post->ID, 'subtitle', $single = true));
