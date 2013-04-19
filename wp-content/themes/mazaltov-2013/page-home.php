@@ -63,8 +63,10 @@ Template Name: Home with Highlights
                             <div class="content-highlights <?php echo $highlighted_category->slug; ?>">
                                 <h4> <?php _e( $highlighted_category->name ); ?> </h4>
 
-        <?php $higlighted_posts = get_posts( array( 'category' => $highlighted_category->term_id ) ); ?>
-        <?php foreach ( $higlighted_posts as $higlighted_post ) { ?>
+        <?php
+            $higlighted_posts = get_posts( array( 'category' => $highlighted_category->term_id ) );
+            $higlighted_posts = array_slice( $higlighted_posts, 0, 2 );
+            foreach ( $higlighted_posts as $higlighted_post ) { ?>
                                 <div class="content-highlighted">
             <?php if ( has_post_thumbnail( $higlighted_post->ID ) ) { ?>
                 <?php echo get_the_post_thumbnail( $higlighted_post->ID, array( 244, 180 ) ); ?>
