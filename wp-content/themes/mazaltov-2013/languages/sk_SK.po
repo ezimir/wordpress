@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mazaltov\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-19 12:05+0100\n"
-"PO-Revision-Date: 2013-04-19 12:05+0100\n"
+"POT-Creation-Date: 2013-04-19 22:07+0100\n"
+"PO-Revision-Date: 2013-04-19 22:07+0100\n"
 "Last-Translator: Martin Tóth <ezimir@gmail.com>\n"
 "Language-Team: Martin Tóth\n"
 "Language: sk_SK\n"
@@ -42,15 +42,15 @@ msgstr "Stránka"
 msgid "Primary Widget Area"
 msgstr "Panel pre Widgety"
 
-#: ../functions.php:82
+#: ../functions.php:83
 msgid "Top menu in header"
 msgstr "Malé menu v hlavičke"
 
-#: ../functions.php:83
+#: ../functions.php:84
 msgid "Main menu in header"
 msgstr "Hlavé menu v hlavičke"
 
-#: ../functions.php:84
+#: ../functions.php:85
 msgid "Main menu v footer"
 msgstr "Hlavé menu v pätičke"
 
@@ -69,14 +69,14 @@ msgid "%s latest comments"
 msgstr "%s posledných komentárov"
 
 #: ../index.php:9
-msgid "Jewish Culture Festival Mazal Tov"
-msgstr "Festival Židovskej Kultúry Mazal Tov"
+msgid "Mazal Tov"
+msgstr "Mazal Tov"
 
-#: ../index.php:22
+#: ../index.php:22 ../page-home.php:16
 msgid "Jewish Culture Festival"
 msgstr "Festival Židovskej Kultúry"
 
-#: ../index.php:32 ../search.php:22
+#: ../index.php:32 ../page-home.php:25 ../search.php:22
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink na %s"
@@ -94,33 +94,37 @@ msgstr "Zobraziť všetky príspevky od %s"
 msgid "Published "
 msgstr "Publikované"
 
-#: ../index.php:42 ../index.php:56 ../search.php:31 ../search.php:46
+#: ../index.php:42 ../index.php:59 ../search.php:31 ../search.php:46
 msgid "Edit"
 msgstr "Upraviť"
 
-#: ../index.php:47
-msgid "<span class=\"meta-nav\">&raquo;</span> more info"
-msgstr "<span class=\"meta-nav\">&raquo;</span> viac info"
+#: ../index.php:50
+msgid "more info"
+msgstr "viac info"
 
-#: ../index.php:52 ../search.php:42
+#: ../index.php:55 ../search.php:42
 msgid "Posted in "
 msgstr "Kategórie"
 
-#: ../index.php:54 ../search.php:44
+#: ../index.php:57 ../search.php:44
 msgid "Tagged "
 msgstr "Značky"
 
-#: ../index.php:55 ../search.php:45
+#: ../index.php:58 ../search.php:45
 msgid "Leave a comment"
 msgstr "Komentovať"
 
-#: ../index.php:55 ../search.php:45
+#: ../index.php:58 ../search.php:45
 msgid "1 Comment"
 msgstr "1 komentár"
 
-#: ../index.php:55 ../search.php:45
+#: ../index.php:58 ../search.php:45
 msgid "% Comments"
 msgstr "% komentárov"
+
+#: ../page-home.php:59
+msgid "read more"
+msgstr "čítať viac"
 
 #: ../search.php:14 ../search.php:55
 msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
@@ -151,3 +155,9 @@ msgstr "Bohužial, vyhľadávanie nebolo úspešné... skúste inak"
 #: ../searchform.php:4
 msgid "Search for:"
 msgstr "Vyhľadávanie:"
+
+#~ msgid "Jewish Culture Festival Mazal Tov"
+#~ msgstr "Festival Židovskej Kultúry Mazal Tov"
+
+#~ msgid "<span class=\"meta-nav\">&raquo;</span> more info"
+#~ msgstr "<span class=\"meta-nav\">&raquo;</span> viac info"

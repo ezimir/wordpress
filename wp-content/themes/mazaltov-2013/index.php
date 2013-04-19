@@ -6,7 +6,7 @@
     <div id="content" class="<?php echo $pagename; ?><?php if (is_category()) { echo 'category'; } ?>">
 
 <?php if (is_category()) { ?>
-        <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('Jewish Culture Festival Mazal Tov', 'mazaltov'); ?></a>
+        <?php get_template_part( 'breadcrumbs' ); ?>
         <h2 class="entry-title"> <a href="<?php echo get_category_link(get_the_category()->cat_ID); ?>"><?php single_cat_title(); ?></a> </h2>
 <?php } ?>
 
@@ -19,7 +19,7 @@
 
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <?php if (!is_category()) { ?>
-                    <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e('Jewish Culture Festival', 'mazaltov'); ?> <?php if (!is_front_page()) { echo 'Mazal Tov'; } ?></a>
+                    <?php get_template_part( 'breadcrumbs' ); ?>
 <?php } ?>
 <?php
     $subtitle = __(get_post_meta($post->ID, 'subtitle', $single = true));
@@ -47,7 +47,7 @@
 <?php if ( has_post_thumbnail() ) { ?>
     <?php the_post_thumbnail( array( 244, 180 ) ); ?>
 <?php } ?>
-<?php the_content( __( '<span class="meta-nav">&raquo;</span> more info', 'mazaltov' )  ); ?>
+<?php the_content( '<span class="meta-nav">&raquo;</span> ' . __( 'more info', 'mazaltov' )  ); ?>
                     </div><!-- .entry-content -->
 
 <?php /* Microformatted category and tag links along with a comments link */ ?>

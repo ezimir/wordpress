@@ -202,12 +202,15 @@ a {
     padding: 0 1em;
 }
 
-.subtitle-link {
+.breadcrumbs {
     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+    .breadcrumbs .separator:last-child {
+        display: none;
+    }
 
 .entry-title {
     margin: .5em 0 1em;
