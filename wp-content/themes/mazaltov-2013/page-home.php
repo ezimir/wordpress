@@ -27,8 +27,8 @@ Template Name: Home with Highlights
 <?php /* The entry content */ ?>
                     <div class="entry-content">
 <?php
-    $hide_empty = 0;
-    $highlighted = get_categories( array( 'child_of' => get_category_by_slug( 'highlighted' )->term_id, 'hide_empty' => $hide_empty ) );
+    $mazaltov_options = get_option( 'mazaltov_theme_options' );
+    $highlighted = get_categories( array( 'child_of' => get_category_by_slug( $mazaltov_options['highlighted_category'] )->term_id, 'hide_empty' => $$mazaltov_options['highlighted_hide_empty'] ) );
 ?>
 <?php if ( count( $highlighted ) == 0 ) { ?>
     <?php the_content(); ?>
@@ -44,7 +44,7 @@ Template Name: Home with Highlights
 
         <?php
             $higlighted_posts = get_posts( array( 'category' => $highlighted_category->term_id ) );
-            $higlighted_posts = array_slice( $higlighted_posts, 0, 2 );
+            $higlighted_posts = array_slice( $higlighted_posts, 0, $mazaltov_options['highlighted_count'] );
             foreach ( $higlighted_posts as $higlighted_post ) { ?>
                                 <div class="content-highlighted">
             <?php if ( has_post_thumbnail( $higlighted_post->ID ) ) { ?>

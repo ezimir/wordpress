@@ -41,11 +41,13 @@ if ( isset( $_GET['activated'] ) ) {
 
 // Check for static widgets in widget-ready areas
 function is_sidebar_active( $index ) {
-  global $wp_registered_sidebars;
+    global $wp_registered_sidebars;
 
-  $widgetcolums = wp_get_sidebars_widgets();
+    $widgetcolums = wp_get_sidebars_widgets();
 
-  if ($widgetcolums[$index]) return true;
+    if ( $widgetcolums[$index] ) {
+        return true;
+    }
 
     return false;
 } // end is_sidebar_active
@@ -75,6 +77,9 @@ function get_random_header_image_from_media( $mediatag ) {
     $random = array_rand( $media );
     return $media[$random]->guid;
 }
+
+
+include_once get_stylesheet_directory() . '/theme-options.php';
 
 
 add_theme_support( 'menus' );
