@@ -28,7 +28,12 @@ Template Name: Home with Highlights
                     <div class="entry-content">
 <?php
     $mazaltov_options = get_option( 'mazaltov_theme_options' );
-    $highlighted = get_categories( array( 'child_of' => get_category_by_slug( $mazaltov_options['highlighted_category'] )->term_id, 'hide_empty' => $$mazaltov_options['highlighted_hide_empty'] ) );
+
+    $highlighted = array_map( function ( $slug ) {
+        return get_category_by_slug( $slug )->term_id;
+    }, explode( ',', $mazaltov_options['highlighted_category'] ) );
+
+    $highlighted = get_categories( array( 'include' => implode( ',', $highlighted ), 'hide_empty' => $$mazaltov_options['highlighted_hide_empty'] ) );
 ?>
 <?php if ( count( $highlighted ) == 0 ) { ?>
     <?php the_content(); ?>
