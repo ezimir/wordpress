@@ -74,6 +74,10 @@ add_action( 'init', 'disableAdminBar' );
 
 function get_random_header_image_from_media( $mediatag ) {
     $media = get_attachments_by_media_tags( 'media_tags=' . $mediatag );
+    if ( count( $media ) === 0 ) {
+        return '';
+    }
+
     $random = array_rand( $media );
     return $media[$random]->guid;
 }
