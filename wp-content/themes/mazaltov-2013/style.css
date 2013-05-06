@@ -201,14 +201,14 @@ a {
     padding: 0 1em;
 }
 
-.breadcrumbs {
+.breadcrumbs, .subtitle-link {
     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
-    .breadcrumbs .separator:last-child {
-        display: none;
+    .breadcrumbs a:last-child {
+        color: #222;
     }
 
 .entry-title {
