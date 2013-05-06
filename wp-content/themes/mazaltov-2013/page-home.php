@@ -53,7 +53,7 @@ Template Name: Home with Highlights
             foreach ( $higlighted_posts as $higlighted_post ) { ?>
                                 <div class="content-highlighted">
             <?php if ( has_post_thumbnail( $higlighted_post->ID ) ) { ?>
-                <?php echo get_the_post_thumbnail( $higlighted_post->ID, array( 244, 180 ) ); ?>
+                <?php echo get_the_post_thumbnail( $higlighted_post->ID, array( 180, 133 ) ); ?>
             <?php } ?>
                                     <h5> <?php _e( $higlighted_post->post_title ); ?> </h5>
                                     <strong> /<?php echo get_the_time( 'd.m.Y', $higlighted_post ); ?>/ </strong>
