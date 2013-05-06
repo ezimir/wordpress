@@ -45,7 +45,7 @@
 <?php /* The entry content */ ?>
                     <div class="entry-content">
 <?php if ( has_post_thumbnail() ) { ?>
-    <?php the_post_thumbnail( array( 244, 180 ) ); ?>
+    <?php the_post_thumbnail( 'medium' ); ?>
 <?php } ?>
 <?php the_content( '<span class="meta-nav">&raquo;</span> ' . __( 'more info', 'mazaltov' )  ); ?>
                     </div><!-- .entry-content -->
