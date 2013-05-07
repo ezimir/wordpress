@@ -37,9 +37,20 @@
                 <?php wp_nav_menu( array( 'theme_location' => 'top', 'sort_column' => 'menu_order', 'container' => false, 'after' => ' | ' ) ); ?>
                 <ul class="menu language-selector">
                     <li class="menu-item">
-                        <?php $current_url = home_url( add_query_arg( array(), $wp->request ) );?>
-                        <a href="<?php echo qtrans_convertURL( $current_url , 'sk' ); ?>/" <?php if ( qtrans_getLanguage() == 'sk') echo 'class="active"'; ?>>SK</a> /
-                        <a href="<?php echo qtrans_convertURL( $current_url , 'en' ); ?>/" <?php if ( qtrans_getLanguage() == 'en') echo 'class="active"'; ?>>EN</a>
+<?php
+    global $qtranslate_slug;
+
+    $current_languge = qtrans_getLanguage();
+    $enabled_languages = qtrans_getSortedLanguages();
+    $langague_count = count( $enabled_languages );
+
+    foreach ( $enabled_languages as $i => $lang ) {
+        echo '<a href="' . $qtranslate_slug->get_current_url( $lang ) . '"' . ( $lang == $current_languge ? ' class="active"' : '' ) . '>' . $lang . '</a>';
+        if ( $i < $langague_count - 1 ) {
+            echo ' / ';
+        }
+    }
+?>
                     </li>
                 </ul>
             </div><!-- #menu-top -->
