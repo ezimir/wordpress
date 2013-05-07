@@ -8,22 +8,37 @@
     if ( is_page() ) {
         $post = $wp_query->get_queried_object();
         echo $separator . the_title( '', '', false );
-    } else {
-        if ( is_category() ) {
-            $category_id = get_cat_ID( single_cat_title( '', false ) );
-        } elseif ( is_single() ) {
-            $category = get_the_category();
-            $category_id = get_cat_ID( $category[0]->cat_name );
+    } elseif ( is_category() || is_single() ) {
+        class Only_Active_Walker_Nav_Menu extends Walker_Nav_Menu {
+            function start_el( &$output, $item, $depth, $args ) {
+                foreach ( $item->classes as $class ) {
+                    if ( strpos( $class, 'current' ) !== false) {
+                        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+                        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+                        $output .= sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+                            $args->before,
+                            $attributes,
+                            $args->link_before,
+                            apply_filters( 'the_title', $item->title, $item->ID ),
+                            $args->link_after,
+                            $args->after
+                        );
+
+                        break;
+                    }
+                }
+            }
         }
 
-        if ( isSet( $category_id ) ) {
-            $parents = get_category_parents( $category_id, TRUE, $separator );
-
-            // remove last separator
-            $parents = substr( $parents, 0, strlen( $parents ) - strlen( $separator ) );
-
-            echo $separator . $parents;
-        }
+        wp_nav_menu( array(
+            'theme_location' => 'main',
+            'sort_column' => 'menu_order',
+            'container' => false,
+            'items_wrap' => '%3$s',
+            'before' => $separator,
+            'walker' => new Only_Active_Walker_Nav_Menu()
+        ) );
     }
 ?>
 </div>
