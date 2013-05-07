@@ -14,7 +14,7 @@ add_action('plugins_loaded', 'pagelinkwidget_internationalization');
 
 class PageLinkWidget extends WP_Widget {
     function PageLinkWidget() {
-        $widget_ops = array('classname' => 'PageLinkWidget', 'description' => __('Facebook profile and Like button', 'pagelinkwidget'));
+        $widget_ops = array('classname' => 'PageLinkWidget', 'description' => __('Link to single page', 'pagelinkwidget'));
         $this->WP_Widget('PageLinkWidget', __('PageLink', 'pagelinkwidget'), $widget_ops);
     }
 
@@ -71,14 +71,7 @@ class PageLinkWidget extends WP_Widget {
             echo $instance['description'];
         }
 
-        $query = $wpdb->prepare(
-            'SELECT qts_slug FROM wp_qtranslate_slug WHERE qts_id = %d AND qts_lang = \'%s\';',
-            $instance['page'],
-            qtrans_getLanguage()
-        );
-        $slug = $wpdb->get_var( $query );
-
-        echo '<p><a href="' . $slug . '">' . $instance['link_text'] . '</a></p>';
+        echo '<p><a href="' . get_permalink( $instance['page'] ) . '">' . $instance['link_text'] . '</a></p>';
 
         echo $after_widget;
     }
