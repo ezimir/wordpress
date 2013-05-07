@@ -143,10 +143,12 @@ a {
             }
 
         #menu-main li.current-menu-item,
+        #menu-main li.current-menu-parent,
         #menu-main li:hover {
             background-image: url("images/button-left-white.png");
         }
             #menu-main li.current-menu-item .btn-after,
+            #menu-main li.current-menu-parent .btn-after,
             #menu-main li:hover .btn-after {
                 background-image: url("images/button-right-white.png");
             }
@@ -240,6 +242,7 @@ a {
 .category .post {
     border-top: 1px dashed #aaa;
     margin-bottom: 2em;
+    overflow: hidden; /* float fix */
 }
     .category .post .entry-title {
         font-weight: normal;
