@@ -356,13 +356,31 @@ a {
     box-shadow: none;
     padding: 10px 15px;
 }
-    .widget-area .well form {
+    .widget-area .well form,
+    .widget-area .well label,
+    .widget-area .well .input-append {
         margin: 0;
     }
-    .widget-area .well input[type=text] {
+    .widget-area .well input[type=text],
+    .widget-area .well button {
         border-color: #b780b7;
-        width: 95%;
     }
+    .widget-area .well input[type=text] {
+        border-right: none;
+    }
+    .widget-area .well button {
+        background: #fff;
+        border-left: none;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, .0745098) inset;
+    }
+        .widget-area .well button:hover {
+            background: #f5f5f5;
+        }
+        .widget-area .well button:active .icon-search {
+            position: relative;
+            top: 1px;
+        }
+
     .mc_signup_submit,
     .widget-area .well input[type=submit] {
         margin-top: .5em;
