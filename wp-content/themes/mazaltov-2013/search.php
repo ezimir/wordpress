@@ -2,12 +2,11 @@
 <?php get_header(); ?>
 
         <div id="container" class="span9">
-            <div id="content">
-                <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/">Festival Židovskej Kultúry Mazal Tov</a>
+            <div id="content" class="search">
+                <?php get_template_part( 'breadcrumbs' ); ?>
 
 <?php if ( have_posts() ) : ?>
-
-                <h1 class="page-title"><?php _e( 'Search Results for: ', 'mazaltov' ); ?> <span><?php the_search_query(); ?></span></h1>
+                <h2 class="page-title"><?php _e( 'Search Results for: ', 'mazaltov' ); ?> <span><?php the_search_query(); ?></span></h2>
 
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
                 <div id="nav-above" class="navigation">

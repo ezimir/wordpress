@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mazaltov\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-20 20:29+0100\n"
-"PO-Revision-Date: 2013-04-20 20:29+0100\n"
+"POT-Creation-Date: 2013-05-08 12:16+0100\n"
+"PO-Revision-Date: 2013-05-08 12:16+0100\n"
 "Last-Translator: Martin Tóth <ezimir@gmail.com>\n"
 "Language-Team: Martin Tóth\n"
 "Language: sk_SK\n"
@@ -30,6 +30,58 @@ msgstr "Bohužial, hľadaná stránka nebola nájdená... skúste vyhľadávanie
 msgid "Jewish Culture Festival"
 msgstr "Festival Židovskej Kultúry"
 
+#: ../breadcrumbs.php:43
+msgid "Search"
+msgstr "Vyhľadávanie"
+
+#: ../category-program.php:28 ../index.php:37 ../search.php:25
+msgid "By "
+msgstr "Od"
+
+#: ../category-program.php:29 ../index.php:38 ../search.php:26
+#, php-format
+msgid "View all posts by %s"
+msgstr "Zobraziť všetky príspevky od %s"
+
+#: ../category-program.php:31 ../index.php:40 ../search.php:28
+msgid "Published "
+msgstr "Publikované"
+
+#: ../category-program.php:33 ../category-program.php:62 ../index.php:42
+#: ../index.php:59 ../search.php:30 ../search.php:45
+msgid "Edit"
+msgstr "Upraviť"
+
+#: ../category-program.php:50 ../index.php:32 ../page-home.php:25
+#: ../search.php:21
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink na %s"
+
+#: ../category-program.php:52 ../index.php:50
+msgid "more info"
+msgstr "viac info"
+
+#: ../category-program.php:58 ../index.php:55 ../search.php:41
+msgid "Posted in "
+msgstr "Kategórie"
+
+#: ../category-program.php:60 ../index.php:57 ../search.php:43
+msgid "Tagged "
+msgstr "Značky"
+
+#: ../category-program.php:61 ../index.php:58 ../search.php:44
+msgid "Leave a comment"
+msgstr "Komentovať"
+
+#: ../category-program.php:61 ../index.php:58 ../search.php:44
+msgid "1 Comment"
+msgstr "1 komentár"
+
+#: ../category-program.php:61 ../index.php:58 ../search.php:44
+msgid "% Comments"
+msgstr "% komentárov"
+
 #: ../footer.php:12
 msgid "design"
 msgstr "dizajn"
@@ -46,19 +98,19 @@ msgstr "Stránka"
 msgid "Primary Widget Area"
 msgstr "Panel pre Widgety"
 
-#: ../functions.php:88
+#: ../functions.php:92
 msgid "Top menu in header"
 msgstr "Malé menu v hlavičke"
 
-#: ../functions.php:89
+#: ../functions.php:93
 msgid "Main menu in header"
 msgstr "Hlavé menu v hlavičke"
 
-#: ../functions.php:90
+#: ../functions.php:94
 msgid "Main menu v footer"
 msgstr "Hlavé menu v pätičke"
 
-#: ../header.php:10 ../search.php:10
+#: ../header.php:10 ../search.php:9
 msgid "Search Results for: "
 msgstr "Vyhľadávanie:"
 
@@ -72,85 +124,35 @@ msgstr "%s posledných príspevkov"
 msgid "%s latest comments"
 msgstr "%s posledných komentárov"
 
-#: ../index.php:32 ../page-home.php:25 ../search.php:22
-#, php-format
-msgid "Permalink to %s"
-msgstr "Permalink na %s"
-
-#: ../index.php:37 ../search.php:26
-msgid "By "
-msgstr "Od"
-
-#: ../index.php:38 ../search.php:27
-#, php-format
-msgid "View all posts by %s"
-msgstr "Zobraziť všetky príspevky od %s"
-
-#: ../index.php:40 ../search.php:29
-msgid "Published "
-msgstr "Publikované"
-
-#: ../index.php:42 ../index.php:59 ../search.php:31 ../search.php:46
-msgid "Edit"
-msgstr "Upraviť"
-
-#: ../index.php:50
-msgid "more info"
-msgstr "viac info"
-
-#: ../index.php:55 ../search.php:42
-msgid "Posted in "
-msgstr "Kategórie"
-
-#: ../index.php:57 ../search.php:44
-msgid "Tagged "
-msgstr "Značky"
-
-#: ../index.php:58 ../search.php:45
-msgid "Leave a comment"
-msgstr "Komentovať"
-
-#: ../index.php:58 ../search.php:45
-msgid "1 Comment"
-msgstr "1 komentár"
-
-#: ../index.php:58 ../search.php:45
-msgid "% Comments"
-msgstr "% komentárov"
-
-#: ../page-home.php:59
+#: ../page-home.php:64
 msgid "read more"
 msgstr "čítať viac"
 
-#: ../search.php:14 ../search.php:55
+#: ../search.php:13 ../search.php:54
 msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&laquo;</span> Staršie príspevky"
 
-#: ../search.php:15 ../search.php:56
+#: ../search.php:14 ../search.php:55
 msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Novšie príspevky <span class=\"meta-nav\">&raquo;</span>"
 
-#: ../search.php:36
+#: ../search.php:35
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "<span class=\"meta-nav\">&raquo;</span> viac info"
 
-#: ../search.php:37
+#: ../search.php:36
 msgid "Pages:"
 msgstr "Stránky:"
 
-#: ../search.php:63
+#: ../search.php:62
 msgid "Nothing Found"
 msgstr "Nič sa nenašlo"
 
-#: ../search.php:65
+#: ../search.php:64
 msgid ""
 "Sorry, but nothing matched your search criteria. Please try again with some "
 "different keywords."
 msgstr "Bohužial, vyhľadávanie nebolo úspešné... skúste inak"
-
-#: ../searchform.php:4
-msgid "Search for:"
-msgstr "Vyhľadávanie:"
 
 #: ../theme-options.php:20
 msgid "Highlighted Category"

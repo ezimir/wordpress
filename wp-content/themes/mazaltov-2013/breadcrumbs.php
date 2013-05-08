@@ -39,6 +39,8 @@
             'before' => $separator,
             'walker' => new Only_Active_Walker_Nav_Menu()
         ) );
+    } elseif ( is_search() ) {
+        echo $separator . __('Search', 'mazaltov');
     }
 ?>
 </div>
