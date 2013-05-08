@@ -99,7 +99,8 @@ a {
             #menu-top .language-selector li a {
                 margin-right: 0;
             }
-                #menu-top .language-selector li a.active {
+                #menu-top .language-selector li a.active,
+                #menu-top .current-menu-item a {
                     text-decoration: underline;
                 }
 

@@ -30,8 +30,23 @@
     if ( is_search() ) {
         echo $separator . __( 'Search', 'mazaltov' );
     } else {
+        $menu_location = 'main';
+
+        if ( is_page() ) {
+            $locations = get_nav_menu_locations();
+            $menu = wp_get_nav_menu_object( $locations[ 'top' ] );
+            foreach ( wp_get_nav_menu_items( $menu->term_id ) as $menu_item ) {
+                $post_id = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
+                if ( is_page( $post_id ) ) {
+                    $menu_location = 'top';
+                    break;
+                }
+            }
+
+        }
+
         wp_nav_menu( array(
-            'theme_location' => is_page() ? 'top' : 'main',
+            'theme_location' => $menu_location,
             'sort_column' => 'menu_order',
             'container' => false,
             'items_wrap' => '%3$s',
