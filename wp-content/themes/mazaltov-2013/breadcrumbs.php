@@ -6,7 +6,7 @@
     class Only_Active_Walker_Nav_Menu extends Walker_Nav_Menu {
         function start_el( &$output, $item, $depth, $args ) {
             foreach ( $item->classes as $class ) {
-                if ( strpos( $class, 'current' ) !== false) {
+                if ( strpos( $class, 'current' ) !== false ) {
                     $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
                     $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
@@ -28,15 +28,10 @@
     $separator = ' <span class="separator">/</span> ';
 
     if ( is_search() ) {
-        echo $separator . __('Search', 'mazaltov');
+        echo $separator . __( 'Search', 'mazaltov' );
     } else {
-        $menu_location = 'main';
-        if ( is_page() ) {
-            $menu_location = 'top';
-        }
-
         wp_nav_menu( array(
-            'theme_location' => $menu_location,
+            'theme_location' => is_page() ? 'top' : 'main',
             'sort_column' => 'menu_order',
             'container' => false,
             'items_wrap' => '%3$s',
