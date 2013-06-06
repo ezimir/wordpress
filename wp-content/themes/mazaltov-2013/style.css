@@ -416,14 +416,18 @@ a {
         line-height: 100px;
     }
 
-    .PartnersWidget .partner.wide,
-    .PartnersList .partner.wide {
-        width: 180px;
-    }
-
     .PartnersWidget a:hover,
     .PartnersList a:hover {
         background: rgba(0, 0, 0, .1);
+    }
+        .PartnersWidget img,
+        .PartnersList img {
+            width: 100%;
+        }
+
+    .PartnersWidget .partner.wide,
+    .PartnersList .partner.wide {
+        width: 180px;
     }
 
     .PartnersList,
