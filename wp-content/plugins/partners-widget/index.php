@@ -14,19 +14,28 @@ if (!function_exists('sort_media_by_title')) {
 }
 
 function partnerswidget_get_list_html( $media_tag ) {
-    $media = get_attachments_by_media_tags('media_tags=' . $media_tag);
-    if (!count($media)) {
+    $media = get_attachments_by_media_tags( 'media_tags=' . $media_tag );
+    if ( !count( $media ) ) {
         return '';
     }
 
-    usort($media, 'sort_media_by_title');
+    $wide = get_attachments_by_media_tags( 'media_tags=wide' );
+    $wide_guids = array_map( function ( $image ) { return $image->guid; }, $wide );
+
+    usort( $media, 'sort_media_by_title' );
 
     $result = '<p>';
     foreach ($media as $image) {
+        $classes = array('partner');
+        if ( in_array( $image->guid, $wide_guids ) ) {
+            $classes[] = 'wide';
+        }
+        $classes = implode( ' ', $classes );
+
         if (strlen($image->post_excerpt) > 0) {
-            $result .= '<a href="' . $image->post_excerpt . '" class="partner"><img src="' . $image->guid . '" /></a>';
+            $result .= '<a href="' . $image->post_excerpt . '" class="' . $classes . '"><img src="' . $image->guid . '" /></a>';
         } else {
-            $result .= '<img src="' . $image->guid . '" class="partner" />';
+            $result .= '<img src="' . $image->guid . '" class="' . $classes . '" />';
         }
     }
     $result .= '</p>';

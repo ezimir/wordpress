@@ -397,9 +397,6 @@ a {
         margin-bottom: 1em;
     }
 
-.PartnersWidget p {
-    overflow: hidden;
-}
 
 .PartnersWidget .partner,
 .PartnersList .partner {
@@ -409,23 +406,31 @@ a {
     padding: 1em;
     width: 90px;
 }
-.PartnersWidget .partner {
-    float: left;
-    margin: .5em .3em;
-    padding: .1em .05em;
-}
-
-.PartnersWidget a:hover,
-.PartnersList a:hover {
-    background: rgba(0, 0, 0, .1);
-}
-.PartnersList {
-    overflow: hidden;
-}
+    .PartnersWidget .partner {
+        float: left;
+        margin: .5em .3em;
+        padding: .1em .05em;
+    }
     .PartnersList .partner {
         float: left;
         line-height: 100px;
     }
+
+    .PartnersWidget .partner.wide,
+    .PartnersList .partner.wide {
+        width: 180px;
+    }
+
+    .PartnersWidget a:hover,
+    .PartnersList a:hover {
+        background: rgba(0, 0, 0, .1);
+    }
+
+    .PartnersList,
+    .PartnersWidget p {
+        overflow: hidden;
+    }
+
 
 .FacebookWidget {
     overflow: hidden;
