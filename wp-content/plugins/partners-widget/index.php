@@ -20,6 +20,9 @@ function partnerswidget_get_list_html( $media_tag ) {
     }
 
     $wide = get_attachments_by_media_tags( 'media_tags=wide' );
+    if ( !count( $wide ) ) {
+        $wide = array();
+    }
     $wide_guids = array_map( function ( $image ) { return $image->guid; }, $wide );
 
     usort( $media, 'sort_media_by_title' );
