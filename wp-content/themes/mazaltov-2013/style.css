@@ -397,6 +397,9 @@ a {
         margin-bottom: 1em;
     }
 
+.PartnersWidget p {
+    overflow: hidden;
+}
 
 .PartnersWidget .partner,
 .PartnersList .partner {
@@ -406,6 +409,12 @@ a {
     padding: 1em;
     width: 90px;
 }
+.PartnersWidget .partner {
+    float: left;
+    margin: .5em .3em;
+    padding: .1em .05em;
+}
+
 .PartnersWidget a:hover,
 .PartnersList a:hover {
     background: rgba(0, 0, 0, .1);
