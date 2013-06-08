@@ -143,7 +143,7 @@
 				<?php if($data['logo'] != "") : ?>
 
 					<a href="<?php echo site_url(); ?>" title="<?php _e('Go Home', 'impresso'); ?>">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/thumb.php?src=<?php echo friendly_change_image_url_on_multisite($data['logo']); ?>&w=139&zc=1" alt="" />
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/thumb.php?src=<?php echo friendly_change_image_url_on_multisite($data['logo']); ?>&h=100&zc=1" alt="" />
 					</a>
 
 				<?php else : ?>

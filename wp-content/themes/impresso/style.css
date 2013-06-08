@@ -188,7 +188,7 @@ body
 
 		#main_header
 		{
-			min-height: 98px;
+			min-height: 125px;
 			margin: 34px;
 			border-bottom: 1px solid rgb(240,240,240);
 			overflow: hidden;
@@ -206,7 +206,7 @@ body
 			{
 				float: left;
 				width: 678px;
-				margin-top: 12px;
+				margin-top: 50px;
 			}
 
 				#main_menu ul.menu
@@ -221,6 +221,7 @@ body
 						text-align: center;
 						min-height: 30px;
 						line-height: 40px;
+						font-size: 1.5em;
 					}
 
 						#main_menu ul.menu li ul
