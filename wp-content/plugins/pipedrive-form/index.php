@@ -140,21 +140,17 @@ function pipedrive_shortcode() {
             ) );
             if ( !$sent ) {
                 $errors[] = 'Couldn\'t send email.';
-            } else {
-                $success = true;
             }
+        }
+
+        if ( count( $errors ) === 0 ) {
+            wp_redirect( get_permalink( $options->get( 'success-page' ) ) );
+            exit();
         }
     }
     ob_start();
 ?>
 <link rel="stylesheet" href="<?php echo plugins_url('pipedrive-form/style.css'); ?>" />
-<?php if ( $success ) { ?>
-<div class="pipedrive">
-    <div class="pipedrive-message success"> Success! We've been notified. </div>
-
-    Thank you for your inquiry. We will get back to you soon!
-</div>
-<?php } else { ?>
 <form class="pipedrive" method="post">
 <?php
     if ( count( $errors ) > 0 ) {
@@ -204,12 +200,11 @@ function pipedrive_shortcode() {
 
     <button> Odoslať </button>
 </form>
-<?php } ?>
 
 <?php
-
     $result = ob_get_contents();
     ob_end_clean();
+
     return $result;
 }
 
