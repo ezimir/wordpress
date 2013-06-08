@@ -12,10 +12,11 @@ include_once $plugin_dir . 'options.php';
 
 
 function clean( $input ) {
-    $input = trim( htmlentities( strip_tags( $input, ',' ) ) );
+    $input = trim( htmlentities( strip_tags( $input, ',' ), ENT_QUOTES, 'utf-8') );
 
-    if ( get_magic_quotes_gpc() )
+    if ( get_magic_quotes_gpc() ) {
         $input = stripslashes( $input );
+    }
 
     $input = mysql_real_escape_string( $input );
 
