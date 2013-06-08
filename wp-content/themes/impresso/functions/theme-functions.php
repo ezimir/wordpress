@@ -31,9 +31,7 @@
 
 			register_nav_menus(
 				array(
-					'main-menu' => __( '01 - Main Menu','impresso' ),
-					'sidebar-menu' => __( '02 - Sidebar Menu','impresso' ),
-					'footer-menu' => __( '03 - Footer Menu','impresso' )
+					'main-menu' => __( '01 - Main Menu','impresso' )
 				)
 			);
 
@@ -81,6 +79,24 @@
 				'after_widget' => '</div>',
 				'before_title' => '<h4 class="widget-title">',
 				'after_title' => '</h4>'
+			)
+		);
+
+		/* ===================================================================================================== */
+
+		/*
+			Register Home Page Widget Area - default used by Client Slider
+		*/
+
+		register_sidebar(
+			array(
+				'id' => 'home_page_widget_area',
+				'name' => __( 'Home Page','impresso' ),
+				'description' => __( 'This widget area is full-width on the home page, just above the blog section. In the demo, we use the client slider (see widget)','impresso' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>'
 			)
 		);
 
