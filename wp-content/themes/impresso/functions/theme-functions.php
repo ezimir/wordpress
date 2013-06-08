@@ -8,6 +8,15 @@
 
 	/* ========================================================================================================= */
 
+	/*
+	*	Capture output buffer, in case there's a redirect in the middle of template.
+	*/
+
+	function app_output_buffer() {
+		ob_start();
+	}
+	add_action('init', 'app_output_buffer');
+
 
 	/*
 		Add Theme Support
