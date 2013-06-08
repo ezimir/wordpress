@@ -103,6 +103,17 @@ class OptionsPage extends Options {
         $section = $this->addSection( 'deal-fields', __( 'Deal Fields' ) );
             $choices = $this->getChoices( $api->getList( 'stages' ) );
             $this->addField( $section, 'deal-stage', __( 'Stage' ), 'select', $choices );
+
+        $section = $this->addSection( 'success-page', __( 'Success Page' ) );
+            $pages = array();
+            foreach ( get_pages() as $page ) {
+                $pages[] = (object) array(
+                    'id' => $page->ID,
+                    'name' => $page->post_title . ' (/' . $page->post_name . ')'
+                );
+            }
+            $choices = $this->getChoices( $pages );
+            $this->addField( $section, 'success-page', __( 'Page' ), 'select', $choices );
     }
 
     public function getChoices($fields) {
