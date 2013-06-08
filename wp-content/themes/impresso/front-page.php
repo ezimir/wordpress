@@ -1,9 +1,15 @@
 <?php get_header(); ?>
 
 
+<?php get_template_part('section', 'home-slider'); ?>
+
 <?php get_template_part('section','subtitles'); ?>
 
-<?php get_template_part('section', 'home-slider'); ?>
+<?php if ( is_active_sidebar( 'home_page_widget_area' ) ) : ?>
+    <section id="home_client_slider">
+    <?php dynamic_sidebar( 'home_page_widget_area' ); ?>
+    </section><!-- #home_client_slider -->
+<?php endif; ?>
 
 <?php get_template_part('category-content'); ?>
 
