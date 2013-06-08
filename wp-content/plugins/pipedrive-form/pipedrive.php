@@ -6,6 +6,7 @@ class Pipedrive {
 
     public function __construct( $api_token ) {
         $this->api_token = $api_token;
+        $this->has_connection = (bool) $this->makeRequest( 'userSettings' );
     }
 
     public function get( $object, $id ) {
@@ -59,9 +60,12 @@ class Pipedrive {
         }
 
         $context = stream_context_create( array( 'http' => $options ) );
-        $request = file_get_contents( $url, false, $context );
-        $response = json_decode( $request );
+        $request = @file_get_contents( $url, false, $context );
+        if ( !$request ) {
+            return false;
+        }
 
+        $response = json_decode( $request );
         return $response;
     }
 }
