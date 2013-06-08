@@ -22,9 +22,11 @@ class FacebookWidget extends WP_Widget {
         $instance = wp_parse_args((array) $instance, array( 'title' => '' ));
         $title = $instance['title'];
         $profile = $instance['profile'];
+        $icon = $instance['icon']
     ?>
     <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title', 'facebookwidget' ) ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
     <p><label for="<?php echo $this->get_field_id('profile'); ?>"><? _e( 'Profile', 'facebookwidget' ) ?>: <input class="widefat" id="<?php echo $this->get_field_id('profile'); ?>" name="<?php echo $this->get_field_name('profile'); ?>" type="text" value="<?php echo attribute_escape($profile); ?>" /></label></p>
+    <p><label for="<?php echo $this->get_field_id('icon'); ?>"><? _e( 'Icon', 'facebookwidget' ) ?>: <input class="widefat" id="<?php echo $this->get_field_id('icon'); ?>" name="<?php echo $this->get_field_name('icon'); ?>" type="checkbox" <?php if ( $icon ) { echo 'checked="checked"'; } ?> /></label></p>
     <?php
     }
 
@@ -32,6 +34,7 @@ class FacebookWidget extends WP_Widget {
         $instance = $old_instance;
         $instance['title'] = $new_instance['title'];
         $instance['profile'] = $new_instance['profile'];
+        $instance['icon'] = $new_instance['icon'];
         $fb = json_decode(file_get_contents('https://graph.facebook.com/'.$instance['profile']));
         $instance['fb_name'] = $fb->name;
         $instance['fb_about'] = $fb->about;
@@ -52,7 +55,9 @@ class FacebookWidget extends WP_Widget {
         echo '<p> ' . __('Up-to-date information and gossip on our Facebook website', 'facebookwidget') . ': </p>';
 
         echo '<div class="fb">';
-        echo '<a href="' . $instance['fb_link'] .'"><img src="https://graph.facebook.com/' . $instance['profile'] .'/picture/normal" /></a>';
+        if ( $instance['icon'] ) {
+            echo '<a href="' . $instance['fb_link'] .'"><img src="https://graph.facebook.com/' . $instance['profile'] .'/picture/normal" /></a>';
+        }
         echo '<a href="' . $instance['fb_link'] .'"><strong>' . $instance['fb_name'] . '</strong></a>';
         echo '<p>' . $instance['fb_about'] . '</p>';
         echo '<iframe src="//www.facebook.com/plugins/like.php?href=' . urlencode($instance['fb_link']) . '&amp;locale=' . get_locale() . '&amp;send=false&amp;layout=button_count&amp;width=155&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=21&amp;appId=349582238426804" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:155px; height:21px;" allowTransparency="true"></iframe>';
