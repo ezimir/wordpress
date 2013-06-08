@@ -85,14 +85,14 @@
 		/* ===================================================================================================== */
 
 		/*
-			Register Home Page Widget Area - default used by Client Slider
+			Register Client Slider Widget Area
 		*/
 
 		register_sidebar(
 			array(
-				'id' => 'home_page_widget_area',
-				'name' => __( 'Home Page','impresso' ),
-				'description' => __( 'This widget area is full-width on the home page, just above the blog section. In the demo, we use the client slider (see widget)','impresso' ),
+				'id' => 'client_slider_widget_area',
+				'name' => __( 'Client Slider','impresso' ),
+				'description' => __( 'This widget area is full-width on the home page, just below the front slider. Contains client images.','impresso' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="widget-title">',
