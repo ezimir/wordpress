@@ -39,6 +39,9 @@ p
 {
 	margin: 12px 0;
 }
+.widget .fb p {
+    margin-top: 0;
+}
 
 span.highlight
 {
