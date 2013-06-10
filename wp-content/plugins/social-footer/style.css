@@ -1,0 +1,18 @@
+
+.SocialFooterWidget {
+    text-align: center;
+}
+
+.SocialFooterWidget .logo {
+    width: 100%;
+}
+
+.SocialFooterWidget a img {
+    margin: 1em .5em;
+    opacity: .8;
+}
+
+    .SocialFooterWidget a:hover img {
+        opacity: 1;
+    }
+
