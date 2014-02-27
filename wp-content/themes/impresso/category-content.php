@@ -67,12 +67,13 @@
 
 				<div class="blog_post_info_and_excerpt">
 
-					<aside class="blog_home_cats"><span><?php the_category(', '); ?></span><span class="post_date"> <?php the_time(get_option('date_format')); ?></span></aside>
+					<!--aside class="blog_home_cats"><span><?php the_category(', '); ?></span><span class="post_date"> <?php the_time(get_option('date_format')); ?></span></aside-->
 					<h1><a href="<?php echo the_permalink(); ?>" title="<?php echo the_title(); ?></a>"><?php echo the_title(); ?></a></h1>
 
-					<p><?php echo friendly_custom_excerpts($post->ID, 26); ?></p>
+					<p><?php the_content(); ?></p>
+					<!--p><?php echo friendly_custom_excerpts($post->ID, 26); ?></p-->
 
-					<p class="read_more_link"><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php _e('Read more','impresso'); ?> &rarr;</a></p>
+					<!--p class="read_more_link"><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php _e('Read more','impresso'); ?> &rarr;</a></p-->
 
 				</div><!-- .blog_post_info_and_excerpt -->
 
