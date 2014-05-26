@@ -372,7 +372,7 @@ a {
     .widget-area .well button {
         border-color: #b780b7;
     }
-    .widget-area .well input[type=text] {
+    .widget-area .well #searchform input[type=text] {
         border-right: none;
     }
     .widget-area .well button {
@@ -396,7 +396,6 @@ a {
     #mc_message {
         margin-bottom: 1em;
     }
-
 
 .PartnersWidget .partner,
 .PartnersList .partner {
@@ -456,7 +455,7 @@ a {
 
 
 .widget-title {
-    background: no-repeat left center;
+    background: no-repeat left 2px;
     padding-left: 30px;
 }
 .PartnersWidget .widget-title {
@@ -475,6 +474,10 @@ a {
     background-image: url("images/icons/tickets.png");
 }
 
+.widget_mailchimpsf_widget label + input[type=text] {
+    width: 185px;
+}
+
 
 #site-info {
     background: url("images/line.png") no-repeat top center;
@@ -484,4 +487,3 @@ a {
     margin: 5px 0 35px;
     text-align: center;
 }
-
