@@ -1,7 +1,7 @@
 /*
-Theme Name: Mazal Tov 2013
+Theme Name: Mazal Tov 2014
 Theme URI: http://mazaltov.sk
-Description: Custom theme for Mazal Tov Festival 2013.
+Description: Custom theme for Mazal Tov Festival 2014.
 Author: Svetozár Šomšák, Martin Tóth
 */
 
@@ -20,10 +20,10 @@ body {
 }
 
 a {
-    color: #7c187a;
+    color: #a2122a;
 }
     a:hover {
-        color: #b780b7;
+        color: #e11c3d;
     }
 
 #shadow-top {
@@ -169,7 +169,7 @@ a {
         text-align: center;
     }
         #menu-footer li {
-            color: #7c187a;
+            color: #a2122a;
             display: inline;
             float: none;
             margin-right: 0;
@@ -340,7 +340,7 @@ a {
 .widget-container {
     background-color: #f9f9f9;
     border: 1px solid #b3b3b3;
-    color: #7c187a;
+    color: #a2122a;
     list-style: none;
     margin-bottom: 3.5em;
 }
@@ -370,7 +370,7 @@ a {
     }
     .widget-area .well input[type=text],
     .widget-area .well button {
-        border-color: #b780b7;
+        border-color: #e11c3d;
     }
     .widget-area .well input[type=text] {
         border-right: none;
@@ -478,7 +478,7 @@ a {
 
 #site-info {
     background: url("images/line.png") no-repeat top center;
-    color: #7c187a;
+    color: #a2122a;
     font-size: 12px;
     padding-top: 20px;
     margin: 5px 0 35px;
