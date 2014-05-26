@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 
 <div id="container" class="span9">
@@ -14,7 +13,6 @@
 <?php if (is_category()) { ?>
 <?php query_posts($query_string . '&orderby=menu_order&order=ASC'); ?>
 <?php } ?>
-<?php $prev_subtitle = ''; ?>
 <?php while ( have_posts() ) : the_post() ?>
 
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -23,10 +21,9 @@
 <?php } ?>
 <?php
     $subtitle = __(get_post_meta($post->ID, 'subtitle', $single = true));
-    if ($subtitle !== '' && $subtitle !== $prev_subtitle) { ?>
+    if ($subtitle !== '') { ?>
                     <h3 class="entry-subtitle"><?php echo $subtitle; ?></h3>
 <?php
-        $prev_subtitle = $subtitle;
     }
 ?>
                     <h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'mazaltov'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
