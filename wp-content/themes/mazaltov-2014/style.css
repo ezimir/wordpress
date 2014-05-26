@@ -254,7 +254,7 @@ a {
     }
         .category .post .entry-title a,
         .search .post:not(.no-results) .entry-title a {
-            color: #7d187a;
+            color: #a2122a;
             font-size: 22px;
             font-style: italic;
         }
@@ -317,7 +317,7 @@ a {
             overflow: hidden;
         }
             .content-highlighted h5 {
-                color: #7d187a;
+                color: #a2122a;
                 font-size: 1.2em;
                 margin: 0;
             }
