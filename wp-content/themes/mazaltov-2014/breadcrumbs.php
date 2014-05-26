@@ -3,23 +3,25 @@
     <a class="subtitle-link" href="<?php bloginfo( 'url' ) ?>/"><?php _e( is_front_page() ? 'Jewish Culture Festival' : 'Mazal Tov', 'mazaltov' ); ?></a>
 
 <?php
-    class Only_Active_Walker_Nav_Menu extends Walker_Nav_Menu {
-        function start_el( &$output, $item, $depth, $args ) {
-            foreach ( $item->classes as $class ) {
-                if ( strpos( $class, 'current' ) !== false ) {
-                    $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-                    $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+    if ( !class_exists( 'Only_Active_Walker_Nav_Menu' ) ) {
+        class Only_Active_Walker_Nav_Menu extends Walker_Nav_Menu {
+            function start_el( &$output, $item, $depth, $args ) {
+                foreach ( $item->classes as $class ) {
+                    if ( strpos( $class, 'current' ) !== false ) {
+                        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+                        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-                    $output .= sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
-                        $args->before,
-                        $attributes,
-                        $args->link_before,
-                        apply_filters( 'the_title', $item->title, $item->ID ),
-                        $args->link_after,
-                        $args->after
-                    );
+                        $output .= sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+                            $args->before,
+                            $attributes,
+                            $args->link_before,
+                            apply_filters( 'the_title', $item->title, $item->ID ),
+                            $args->link_after,
+                            $args->after
+                        );
 
-                    break;
+                        break;
+                    }
                 }
             }
         }
