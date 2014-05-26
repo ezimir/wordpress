@@ -27,7 +27,7 @@ a {
     }
 
 #shadow-top {
-    background: url("images/shadow-top.png") no-repeat top center;
+    background: url("images/shadow-top.png") no-repeat center 6px;
 }
 #shadow-bottom {
     background: url("images/shadow-bottom.png") no-repeat bottom center;
@@ -41,7 +41,7 @@ a {
 
 #header {
     background: url("images/header.png") no-repeat bottom left;
-    height: 330px;
+    height: 336px;
     overflow: hidden;
     position: relative;
 }
@@ -55,7 +55,7 @@ a {
             float: left;
             font-size: 2em;
             height: 250px;
-            margin: -20px 0 0 53px;
+            margin: -15px 0 0 55px;
             width: 260px;
             text-indent: -9999px;
         }
